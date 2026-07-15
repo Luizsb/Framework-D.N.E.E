@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framework D.N.E.E. | Guia Interativo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+    <!-- Header / Hero -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-indigo-600 text-white p-2 rounded-lg shadow-sm">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h1 class="text-2xl font-bold tracking-tight">Framework <span class="gradient-text">D.N.E.E.</span></h1>
+            </div>
+            <nav class="flex gap-6 text-sm font-medium text-slate-600">
+                <a href="#conceito" class="hover:text-indigo-600 transition">O Conceito</a>
+                <a href="#arquitetura" class="hover:text-indigo-600 transition">A Arquitetura</a>
+                <a href="#aplicacao" class="hover:text-indigo-600 transition">Como Aplicar</a>
+                <a href="#dia-a-dia" class="hover:text-indigo-600 transition">Dia a Dia</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-24">
+        
+        <!-- O Conceito -->
+        <section id="conceito" class="scroll-mt-24">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-sm font-bold tracking-widest text-indigo-600 uppercase mb-3">O Problema & A Solução</h2>
+                <h3 class="text-4xl font-extrabold text-slate-900 mb-6">Desenvolvimento assistido por IA sem perder o controle.</h3>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    A Inteligência Artificial acelera a escrita de código em 10x, mas cria um problema grave: <strong class="text-slate-900">perda de contexto e arquitetura espaguete</strong>. O framework D.N.E.E. é o Mínimo Viável Perfeito para transferir o fardo da documentação para a IA.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">1. Descobrir</h4>
+                    <p class="text-sm text-slate-500">A IA avalia o problema, levanta a hipótese de valor e propõe a solução no chat <strong>antes</strong> de tocar no código.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">2. Nortear</h4>
+                    <p class="text-sm text-slate-500">A IA lê o <strong>Documento Norte (SDD)</strong> para garantir que a solução proposta respeita as regras e a arquitetura vigentes.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">3. Especificar</h4>
+                    <p class="text-sm text-slate-500">A IA quebra a solução em tarefas claras (Tasks/Roadmap) para execução controlada e sem surpresas.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">4. Evidenciar</h4>
+                    <p class="text-sm text-slate-500">Após sucesso, a IA documenta automaticamente o <strong>Antes, Depois e a Decisão</strong> no Changelog.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arquitetura de Arquivos -->
+        <section id="arquitetura" class="scroll-mt-24">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">A Estrutura de Arquivos <br><span class="text-indigo-600">(O Canvas)</span></h2>
+                    <p class="text-lg text-slate-600 mb-8">
+                        A regra de ouro é: <strong>A fonte da verdade deve ser condensada e visual.</strong>
+                        Abandonamos dezenas de pastas e arquivos soltos em favor de apenas 6 elementos chave.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <div class="mt-1 p-2 bg-slate-100 rounded text-slate-600 font-mono text-xs">.cursorrules</div>
+                            <div>
+                                <h5 class="font-bold text-slate-900">A Constituição (O Maestro)</h5>
+                                <p class="text-sm text-slate-500">Arquivo raiz que obriga a IA a seguir o processo D.N.E.E, pensar como PM e formatar a documentação.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <div class="mt-1 p-2 bg-indigo-50 text-indigo-700 rounded font-mono text-xs">visao-projeto.html</div>
+                            <div>
+                                <h5 class="font-bold text-slate-900">O Dashboard Visual</h5>
+                                <p class="text-sm text-slate-500">Um HTML que renderiza os arquivos Markdown num painel interativo de abas. Feito para humanos (Gestores, QA).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <div class="mt-1 p-2 bg-pink-50 text-pink-700 rounded font-mono text-xs">docs/SOBRE.md</div>
+                            <div>
+                                <h5 class="font-bold text-slate-900">O Pitch (A Porta de Entrada)</h5>
+                                <p class="text-sm text-slate-500">A visão de negócio para stakeholders. O problema, o público e o valor em linguagem leiga, sem jargões técnicos. É a aba padrão.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <div class="mt-1 p-2 bg-blue-50 text-blue-700 rounded font-mono text-xs">docs/SDD.md</div>
+                            <div>
+                                <h5 class="font-bold text-slate-900">O Norte Técnico (O Presente)</h5>
+                                <p class="text-sm text-slate-500">A verdade absoluta técnica. Contém Arquitetura e Regras Inquebráveis. Usa tags HTML para esconder diagramas complexos.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <div class="mt-1 p-2 bg-amber-50 text-amber-700 rounded font-mono text-xs">docs/ROADMAP.md</div>
+                            <div>
+                                <h5 class="font-bold text-slate-900">O Futuro (O Planejamento)</h5>
+                                <p class="text-sm text-slate-500">Onde moram as fases de transição, os débitos técnicos estruturados e as próximas tarefas (Checklists).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <div class="mt-1 p-2 bg-emerald-50 text-emerald-700 rounded font-mono text-xs">docs/CHANGELOG_EVIDENCES.md</div>
+                            <div>
+                                <h5 class="font-bold text-slate-900">O Passado (As Evidências)</h5>
+                                <p class="text-sm text-slate-500">Registro automático de valor gerado. Formato estrito com hora: <em>AAAA-MM-DD · HH:MM — Mudança</em>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <div class="bg-slate-900 rounded-2xl p-6 shadow-xl text-slate-300 font-mono text-sm">
+                        <div class="flex gap-2 mb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-indigo-400">meu-projeto/</p>
+                            <p class="pl-4 border-l border-slate-700 ml-2 text-white">.cursorrules <span class="text-slate-500 text-xs ml-2">&lt;- Regras da IA</span></p>
+                            <p class="pl-4 border-l border-slate-700 ml-2 text-indigo-400">docs/</p>
+                            <p class="pl-8 border-l border-slate-700 ml-2 text-blue-300">visao-projeto.html <span class="text-slate-500 text-xs ml-2">&lt;- UI para humanos</span></p>
+                            <p class="pl-8 border-l border-slate-700 ml-2">SOBRE.md <span class="text-slate-500 text-xs ml-2">&lt;- Porta de Entrada</span></p>
+                            <p class="pl-8 border-l border-slate-700 ml-2">SDD.md <span class="text-slate-500 text-xs ml-2">&lt;- O Norte Técnico</span></p>
+                            <p class="pl-8 border-l border-slate-700 ml-2">ROADMAP.md <span class="text-slate-500 text-xs ml-2">&lt;- O Futuro</span></p>
+                            <p class="pl-8 border-l border-slate-700 ml-2">CHANGELOG_EVIDENCES.md <span class="text-slate-500 text-xs ml-2">&lt;- O Passado</span></p>
+                            <p class="pl-4 border-l border-slate-700 ml-2 text-indigo-400">src/</p>
+                            <p class="pl-8 border-l border-slate-700 ml-2">... <span class="text-slate-500 text-xs ml-2">seu código limpo aqui</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como Aplicar (Abas) -->
+        <section id="aplicacao" class="scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-8 text-center">Como Aplicar na Prática</h2>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="flex border-b border-slate-100 bg-slate-50/50">
+                    <button onclick="switchTab('novos')" id="tab-novos" class="flex-1 py-4 font-semibold text-indigo-600 border-b-2 border-indigo-600 transition">🌱 Projetos Novos</button>
+                    <button onclick="switchTab('legados')" id="tab-legados" class="flex-1 py-4 font-semibold text-slate-500 hover:text-slate-700 transition">🏥 Projetos Existentes (Legados)</button>
+                </div>
+                
+                <div class="p-8">
+                    <!-- Tab: Novos -->
+                    <div id="content-novos" class="tab-content active space-y-6">
+                        <p class="text-slate-600">Em um projeto do zero, o objetivo é nascer com a governança correta.</p>
+                        <ul class="space-y-4">
+                            <li class="flex gap-4">
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">1</span>
+                                <p class="text-slate-700 mt-1">Abra o chat do Cursor (Composer) no seu repositório limpo.</p>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">2</span>
+                                <p class="text-slate-700 mt-1">Copie o <strong>Mega-Prompt de Inicialização</strong> (abaixo) e envie para a IA.</p>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">3</span>
+                                <p class="text-slate-700 mt-1">A IA criará a pasta <code>docs/</code>, o HTML, os artefatos base e aplicará a Constituição (<code>.cursorrules</code>).</p>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">4</span>
+                                <p class="text-slate-700 mt-1"><strong>Inicie o desenvolvimento.</strong> Daqui pra frente a IA já está instruída a planejar antes de codar e registrar evidências sozinha.</p>
+                            </li>
+                        </ul>
+
+                        <div class="mt-8 border-t border-slate-100 pt-6">
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">🌱 Mega-Prompt de Inicialização (Copiar & Colar)</h3>
+                            <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group">
+                                <!-- Header Estilo macOS -->
+                                <div class="flex items-center justify-between px-4 py-3 bg-[#1E293B]">
+                                    <div class="flex gap-2">
+                                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                        <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                    </div>
+                                    <button onclick="copyToClipboard('code1', this)" class="bg-slate-700 hover:bg-slate-600 text-white text-xs px-3 py-1.5 rounded transition opacity-0 group-hover:opacity-100 flex items-center gap-2">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                        Copiar Prompt
+                                    </button>
+                                </div>
+                                <!-- Código -->
+                                <pre class="p-6 text-indigo-300 text-sm font-mono leading-relaxed whitespace-pre-wrap break-words"><code id="code1">Cursor, vamos criar um projeto novo do zero usando a arquitetura D.N.E.E.
+Meu objetivo com este projeto é: [DESCREVA SUA IDEIA AQUI].
+
+Execute rigorosamente as tarefas abaixo:
+1. Crie o arquivo `.cursorrules` na raiz obrigando o fluxo D.N.E.E. 
+   - OBRIGUE a IA a usar tags HTML &lt;details&gt; para esconder diagramas mermaid gigantes.
+   - EXIJA o formato de data/hora no topo das evidências: `## AAAA-MM-DD · HH:MM — [Nome da mudança]`.
+2. Faça um mini-Discovery comigo aqui no chat (Problema, Valor, Solução, Sucesso) para alinhar a solução técnica. Aguarde meu OK.
+3. Após o meu OK, crie o `docs/SOBRE.md`. Ele é a porta de entrada de negócio (para stakeholders). 
+   - Deve conter: Em uma frase, Problema que resolve, Para quem é, O que faz hoje, Pitch curto (elevator), Momento atual, e Mapa das abas da documentação. 
+   - REGRAS: Emojis SÓ nos títulos (`#` e `##`), não no corpo. Sem jargão técnico. Ao final, linke "Detalhe técnico -&gt; SDD" e "Próximos passos -&gt; Roadmap".
+4. Crie o `docs/SDD.md` definindo Visão técnica, Arquitetura base e Regras de Negócio Inquebráveis.
+5. Crie o `docs/ROADMAP.md` com as tarefas iniciais e MVP.
+6. Crie `docs/visao-projeto.html`. REGRAS DE OURO PARA A UI (já aplique na criação):
+   - 4 abas funcionais (Sobre, Norte, Roadmap, Evidências) carregando os .md via marked.js. A aba "💡 Sobre o projeto" DEVE ser a PRIMEIRA e a PADRÃO ao abrir a página.
+   - Botão flutuante "Voltar ao topo" (canto inferior direito, aparece após ~300px de scroll, com animação suave).
+   - Estilo CSS para Checklists (`list-style: none` para evitar bullet duplo do markdown).
+   - Tratamento de Mermaid: Converta blocos ```mermaid para `&lt;div class="mermaid"&gt;`, chame `mermaid.run()`, e garanta o re-render ao expandir tags `&lt;details&gt;`.
+   - Bloqueio `file://`: Se aberto localmente sem servidor, exiba aviso amigável sugerindo `npm run docs:serve` ou servidor HTTP local.
+7. Inicie o `docs/CHANGELOG_EVIDENCES.md` com o registro desta inicialização.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Legados -->
+                    <div id="content-legados" class="tab-content space-y-6">
+                        <div class="bg-amber-50 border border-amber-200 text-amber-800 p-4 rounded-lg text-sm mb-6">
+                            <strong>⚠️ Regra de Ouro:</strong> A documentação estética vem <em>depois</em> do contexto real. Não mande a IA criar um SDD cego.
+                        </div>
+                        <ul class="space-y-6">
+                            <li class="flex gap-4">
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold">1</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">O Raio-X (Mapeamento Atual)</h4>
+                                    <p class="text-slate-600 text-sm mt-1">Peça para a IA varrer o código: <em>"Cursor, faça um Raio-X do projeto. Quais funcionalidades existem, qual a estrutura do banco e onde estão os gargalos técnicos?"</em></p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold">2</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">O Desvio de Rota (Opcional - Remapeamento)</h4>
+                                    <p class="text-slate-600 text-sm mt-1">Se o projeto vai sofrer mutação (ex: trocar o banco de dados), crie um arquivo base com as regras novas, peça para a IA cruzar com o Raio-X atual e listar os impactos no chat.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold">3</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">A Refatoração Documental</h4>
+                                    <p class="text-slate-600 text-sm mt-1">Com o contexto entendido, envie o <strong>Prompt de Refatoração Documental</strong> (abaixo). A IA vai gerar o Canvas inteiro <code>(Sobre, SDD, Roadmap)</code> refletindo a realidade.</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="mt-8 border-t border-slate-100 pt-6">
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">🏥 Prompt de Refatoração Documental (Copiar & Colar)</h3>
+                            <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group">
+                                <div class="flex items-center justify-between px-4 py-3 bg-[#1E293B]">
+                                    <div class="flex gap-2">
+                                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                        <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                    </div>
+                                    <button onclick="copyToClipboard('code2', this)" class="bg-slate-700 hover:bg-slate-600 text-white text-xs px-3 py-1.5 rounded transition opacity-0 group-hover:opacity-100 flex items-center gap-2">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                        Copiar Prompt
+                                    </button>
+                                </div>
+                                <pre class="p-6 text-indigo-300 text-sm font-mono leading-relaxed whitespace-pre-wrap break-words"><code id="code2">Cursor, vamos aplicar a arquitetura de documentação D.N.E.E. neste projeto. Como ele já possui código, precisamos mapear a realidade antes de documentar.
+
+PASSO 1: O Raio-X
+Faça uma varredura profunda no código. Me liste aqui no chat: 1) Funcionalidades estruturais atuais, 2) Estrutura do Banco de Dados/Dados, e 3) Principais débitos técnicos ou incompletudes.
+Aguarde o meu "OK" para prosseguir.
+
+PASSO 2: A Documentação (Após o meu OK)
+- Crie o `.cursorrules` exigindo o fluxo D.N.E.E.
+  - Regra de Evidências: Usar formato `## AAAA-MM-DD · HH:MM — [Nome da mudança]`.
+  - Regra de Estética: Esconder diagramas grandes em `&lt;details&gt;`.
+- Crie `docs/SOBRE.md` sendo a porta de entrada de negócio. Estrutura: Em uma frase, Problema, Para quem é, O que faz hoje, Momento atual. REGRAS: Emojis SÓ nos títulos, sem termos técnicos/arquitetura no corpo.
+- Crie `docs/ROADMAP.md` e coloque todos os débitos mapeados do Raio-X lá, com checkboxes.
+- Crie `docs/SDD.md` documentando o ESTADO TÉCNICO REAL do projeto (Arquitetura, Regras inquebráveis).
+- Crie `docs/visao-projeto.html`. REGRAS DE OURO PARA A UI (já aplique na criação):
+   - 4 abas funcionais (Sobre, Norte, Roadmap, Evidências). A aba "💡 Sobre o projeto" DEVE ser a PRIMEIRA e a PADRÃO ao abrir a página.
+   - Botão flutuante "Voltar ao topo" (canto inferior direito, aparece após ~300px de scroll).
+   - Estilo CSS para Checklists (`list-style: none`).
+   - Tratamento de Mermaid: Renderização nativa com suporte a re-render em tags `&lt;details&gt;`.
+   - Aviso de bloqueio protocolo `file://` pedindo servidor HTTP local.
+- Atualize `docs/CHANGELOG_EVIDENCES.md` documentando esta organização inicial.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rotina & Manutenção -->
+        <section id="dia-a-dia" class="scroll-mt-24 pb-24">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-8">🔄 Rotina & Manutenção (O Dia a Dia)</h2>
+            <p class="text-lg text-slate-600 mb-8">Depois que o projeto está estruturado, você usará os prompts abaixo no dia a dia para consumir tarefas e manter a IA na rédea curta.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Prompt 3: Tarefa Diária -->
+                <div class="flex flex-col">
+                    <h3 class="font-bold text-xl text-slate-900 mb-2">A. Executando o Roadmap 🚀</h3>
+                    <p class="text-sm text-slate-500 mb-4">Como consumir as pendências e gerar código de forma segura.</p>
+                    <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group flex-grow">
+                        <div class="flex items-center justify-between px-4 py-3 bg-[#1E293B]">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <button onclick="copyToClipboard('code3', this)" class="bg-slate-700 hover:bg-slate-600 text-white text-xs px-3 py-1.5 rounded transition opacity-0 group-hover:opacity-100 flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                Copiar Prompt
+                            </button>
+                        </div>
+                        <pre class="p-6 text-indigo-300 text-sm font-mono leading-relaxed whitespace-pre-wrap break-words"><code id="code3">Cursor, vamos iniciar a próxima fase. Leia o `docs/ROADMAP.md`, pegue a primeira tarefa pendente de transição/épico atual e faça o Discovery aqui no chat (Problema, Solução, Impacto no Código). 
+Aguarde minha aprovação antes de gerar qualquer código. Após o código estar pronto, siga a regra de registrar a evidência no Changelog.</code></pre>
+                    </div>
+                </div>
+
+                <!-- Prompt 4: Correção (Chicote) -->
+                <div class="flex flex-col">
+                    <h3 class="font-bold text-xl text-slate-900 mb-2">B. Correção de Rota (O "Chicote") ⚡</h3>
+                    <p class="text-sm text-slate-500 mb-4">Use quando a IA codar certo, mas "esquecer" da documentação.</p>
+                    <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group flex-grow">
+                        <div class="flex items-center justify-between px-4 py-3 bg-[#1E293B]">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <button onclick="copyToClipboard('code4', this)" class="bg-slate-700 hover:bg-slate-600 text-white text-xs px-3 py-1.5 rounded transition opacity-0 group-hover:opacity-100 flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                Copiar Prompt
+                            </button>
+                        </div>
+                        <pre class="p-6 text-indigo-300 text-sm font-mono leading-relaxed whitespace-pre-wrap break-words"><code id="code4">Cursor, você implementou a feature com sucesso mas quebrou a regra do nosso `.cursorrules`. 
+Vá agora no `docs/CHANGELOG_EVIDENCES.md` e registre a evidência da entrega que acabamos de fazer. OBRIGATÓRIO: Use o título no formato `## AAAA-MM-DD · HH:MM — [Nome da mudança]` e preencha Antes, Depois e Decisão. Se impactou regras, atualize o SDD. Se resolveu um débito, marque [x] no ROADMAP.md.</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Botão Voltar ao Topo -->
+    <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 bg-indigo-600 text-white p-3 rounded-full shadow-xl opacity-0 pointer-events-none transition-all duration-300 z-50 hover:bg-indigo-700 hover:shadow-indigo-500/30 hover:-translate-y-1">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+    </button>
+
+    <script>
+        // Lógica de Abas
+        function switchTab(tabId) {
+            // Remove active de todos os botões e conteúdos
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-novos').className = "flex-1 py-4 font-semibold text-slate-500 hover:text-slate-700 transition";
+            document.getElementById('tab-legados').className = "flex-1 py-4 font-semibold text-slate-500 hover:text-slate-700 transition";
+            
+            // Ativa o selecionado
+            document.getElementById('content-' + tabId).classList.add('active');
+            document.getElementById('tab-' + tabId).className = "flex-1 py-4 font-semibold text-indigo-600 border-b-2 border-indigo-600 transition";
+        }
+
+        // Lógica de Copiar para a Área de Transferência
+        function copyToClipboard(elementId, buttonElem) {
+            const codeText = document.getElementById(elementId).innerText;
+            
+            // Cria elemento temporario e usa execCommand (fallback seguro p/ iframe)
+            const textArea = document.createElement("textarea");
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                
+                // Feedback visual no botão
+                const originalHTML = buttonElem.innerHTML;
+                buttonElem.innerHTML = `<svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Copiado!`;
+                buttonElem.classList.add('bg-slate-900');
+                
+                setTimeout(() => {
+                    buttonElem.innerHTML = originalHTML;
+                    buttonElem.classList.remove('bg-slate-900');
+                }, 2000);
+            } catch (err) {
+                console.error('Falha ao copiar', err);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // Lógica do botão Voltar ao Topo
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                btn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                btn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            } else {
+                btn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                btn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            }
+        });
+    </script>
+</body>
+</html>
