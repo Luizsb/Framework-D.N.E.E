@@ -27,8 +27,7 @@ A IA acelera a escrita de código, mas sem processo isso gera **perda de context
 
 | Arquivo | Descrição |
 |---------|-----------|
-| [`guia_definitivo_d_n_e_e.html`](./guia_definitivo_d_n_e_e.html) | Página interativa completa do framework — conceito, arquitetura de arquivos, mega-prompts e rotina do dia a dia |
-| [`index.html`](./index.html) | Mesma página, publicada no GitHub Pages |
+| [`index.html`](./index.html) | Guia interativo do framework — conceito, arquitetura, mega-prompts e rotina do dia a dia |
 
 **Site ao vivo:** [https://luizsb.github.io/Framework-D.N.E.E/](https://luizsb.github.io/Framework-D.N.E.E/)
 
@@ -74,7 +73,7 @@ meu-projeto/
 
 ## Como começar
 
-1. Abra [`guia_definitivo_d_n_e_e.html`](./guia_definitivo_d_n_e_e.html) no navegador
+1. Abra [`index.html`](./index.html) no navegador (ou o [site ao vivo](https://luizsb.github.io/Framework-D.N.E.E/))
 2. Vá em **Como Aplicar**
 3. Copie o **Mega-Prompt** (projeto novo ou legado) e cole no Cursor
 4. Deixe a IA montar a estrutura `docs/` + `.cursorrules` e siga o fluxo D.N.E.E. em toda feature
