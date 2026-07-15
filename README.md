@@ -28,8 +28,11 @@ A IA acelera a escrita de código, mas sem processo isso gera **perda de context
 | Arquivo | Descrição |
 |---------|-----------|
 | [`guia_definitivo_d_n_e_e.html`](./guia_definitivo_d_n_e_e.html) | Página interativa completa do framework — conceito, arquitetura de arquivos, mega-prompts e rotina do dia a dia |
+| [`index.html`](./index.html) | Mesma página, publicada no GitHub Pages |
 
-Abra o HTML no navegador para navegar pelo guia (conceito, estrutura, aplicação em projetos novos/legados e operação diária).
+**Site ao vivo:** [https://luizsb.github.io/Framework-D.N.E.E/](https://luizsb.github.io/Framework-D.N.E.E/)
+
+Abra o HTML no navegador (ou o link acima) para navegar pelo guia (conceito, estrutura, aplicação em projetos novos/legados e operação diária).
 
 ---
 
