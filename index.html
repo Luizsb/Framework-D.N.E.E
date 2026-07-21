@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Framework D.N.E.E. | Guia Interativo</title>
+    <title>Framework D.N.E.E. Docs | Guia Interativo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -27,26 +27,31 @@
                 <div class="bg-indigo-600 text-white p-2 rounded-lg shadow-sm">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 </div>
-                <h1 class="text-2xl font-bold tracking-tight">Framework <span class="gradient-text">D.N.E.E.</span></h1>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">Framework <span class="gradient-text">D.N.E.E. Docs</span></h1>
+                    <p class="text-xs text-slate-500">Um processo leve para documentar, evoluir e manter projetos com apoio de IA.</p>
+                </div>
             </div>
-            <nav class="flex gap-6 text-sm font-medium text-slate-600">
+            <nav class="flex flex-wrap gap-6 text-sm font-medium text-slate-600">
                 <a href="#conceito" class="hover:text-indigo-600 transition">O Conceito</a>
-                <a href="#arquitetura" class="hover:text-indigo-600 transition">A Arquitetura</a>
+                <a href="#arquitetura" class="hover:text-indigo-600 transition">A Estrutura</a>
+                <a href="#abas" class="hover:text-indigo-600 transition">As 4 Abas</a>
                 <a href="#aplicacao" class="hover:text-indigo-600 transition">Como Aplicar</a>
+                <a href="#duvidas-ia" class="hover:text-indigo-600 transition">Dúvidas da IA</a>
                 <a href="#dia-a-dia" class="hover:text-indigo-600 transition">Dia a Dia</a>
             </nav>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-6 py-12 space-y-24">
-        
+
         <!-- O Conceito -->
         <section id="conceito" class="scroll-mt-24">
             <div class="text-center max-w-3xl mx-auto mb-12">
                 <h2 class="text-sm font-bold tracking-widest text-indigo-600 uppercase mb-3">O Problema & A Solução</h2>
-                <h3 class="text-4xl font-extrabold text-slate-900 mb-6">Desenvolvimento assistido por IA sem perder o controle.</h3>
+                <h3 class="text-4xl font-extrabold text-slate-900 mb-6">Documentação viva para projetos feitos com IA.</h3>
                 <p class="text-lg text-slate-600 leading-relaxed">
-                    A Inteligência Artificial acelera a escrita de código em 10x, mas cria um problema grave: <strong class="text-slate-900">perda de contexto e arquitetura espaguete</strong>. O framework D.N.E.E. é o Mínimo Viável Perfeito para transferir o fardo da documentação para a IA.
+                    A IA acelera a criação de código, mas sem documentação viva ela também pode gerar <strong class="text-slate-900">perda de contexto, decisões soltas e retrabalho</strong>. O D.N.E.E. Docs cria um fluxo simples para descobrir o problema, nortear o projeto, planejar mudanças e registrar evidências.
                 </p>
             </div>
 
@@ -65,7 +70,7 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                     </div>
                     <h4 class="text-xl font-bold mb-2">2. Nortear</h4>
-                    <p class="text-sm text-slate-500">A IA lê o <strong>Documento Norte (SDD)</strong> para garantir que a solução proposta respeita as regras e a arquitetura vigentes.</p>
+                    <p class="text-sm text-slate-500">A IA lê o <strong>Norte do projeto (SDD.md)</strong> para garantir que a solução proposta respeita as regras e a arquitetura vigentes.</p>
                 </div>
                 <!-- Card 3 -->
                 <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
@@ -73,7 +78,7 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
                     </div>
                     <h4 class="text-xl font-bold mb-2">3. Especificar</h4>
-                    <p class="text-sm text-slate-500">A IA quebra a solução em tarefas claras (Tasks/Roadmap) para execução controlada e sem surpresas.</p>
+                    <p class="text-sm text-slate-500">A IA transforma a solução aprovada em tarefas claras no <strong>ROADMAP.md</strong>, critérios de aceite no <strong>SDD.md</strong> e próximos passos controlados antes de gerar código.</p>
                 </div>
                 <!-- Card 4 -->
                 <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
@@ -81,7 +86,7 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
                     <h4 class="text-xl font-bold mb-2">4. Evidenciar</h4>
-                    <p class="text-sm text-slate-500">Após sucesso, a IA documenta automaticamente o <strong>Antes, Depois e a Decisão</strong> no Changelog.</p>
+                    <p class="text-sm text-slate-500">Após sucesso, a IA documenta automaticamente o <strong>Antes, Depois e a Decisão</strong> no CHANGELOG_EVIDENCES.md.</p>
                 </div>
             </div>
         </section>
@@ -90,52 +95,51 @@
         <section id="arquitetura" class="scroll-mt-24">
             <div class="flex flex-col lg:flex-row gap-12 items-center">
                 <div class="lg:w-1/2">
-                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">A Estrutura de Arquivos <br><span class="text-indigo-600">(O Canvas)</span></h2>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">A Estrutura de Arquivos <br><span class="text-indigo-600">(simples e padronizada)</span></h2>
                     <p class="text-lg text-slate-600 mb-8">
-                        A regra de ouro é: <strong>A fonte da verdade deve ser condensada e visual.</strong>
-                        Abandonamos dezenas de pastas e arquivos soltos em favor de apenas 6 elementos chave.
+                        A regra de ouro: <strong>a fonte da verdade são os arquivos Markdown</strong> dentro de <code class="text-sm bg-slate-100 px-1.5 py-0.5 rounded">docs/</code>. A página <code class="text-sm bg-slate-100 px-1.5 py-0.5 rounded">visao-projeto.html</code> é apenas a interface visual para leitura humana. Nada além disso é obrigatório.
                     </p>
                     <div class="space-y-4">
                         <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
                             <div class="mt-1 p-2 bg-slate-100 rounded text-slate-600 font-mono text-xs">.cursorrules</div>
                             <div>
                                 <h5 class="font-bold text-slate-900">A Constituição (O Maestro)</h5>
-                                <p class="text-sm text-slate-500">Arquivo raiz que obriga a IA a seguir o processo D.N.E.E, pensar como PM e formatar a documentação.</p>
+                                <p class="text-sm text-slate-500">Arquivo raiz que obriga a IA a seguir o processo D.N.E.E. Docs, pensar como PM e manter a documentação sempre atualizada.</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                            <div class="mt-1 p-2 bg-indigo-50 text-indigo-700 rounded font-mono text-xs">visao-projeto.html</div>
+                            <div class="mt-1 p-2 bg-indigo-50 text-indigo-700 rounded font-mono text-xs">docs/visao-projeto.html</div>
                             <div>
-                                <h5 class="font-bold text-slate-900">O Dashboard Visual</h5>
-                                <p class="text-sm text-slate-500">Um HTML que renderiza os arquivos Markdown num painel interativo de abas. Feito para humanos (Gestores, QA).</p>
+                                <h5 class="font-bold text-slate-900">A Interface Visual</h5>
+                                <p class="text-sm text-slate-500">Um HTML que renderiza os arquivos Markdown num painel de 4 abas. Feito para humanos (gestores, QA, time). Não é fonte da verdade: só exibe.</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
                             <div class="mt-1 p-2 bg-pink-50 text-pink-700 rounded font-mono text-xs">docs/SOBRE.md</div>
                             <div>
                                 <h5 class="font-bold text-slate-900">O Pitch (A Porta de Entrada)</h5>
-                                <p class="text-sm text-slate-500">A visão de negócio para stakeholders. O problema, o público e o valor em linguagem leiga, sem jargões técnicos. É a aba padrão.</p>
+                                <p class="text-sm text-slate-500">A visão de negócio: problema, público e valor em linguagem leiga. O Discovery resumido também mora aqui. É a aba padrão.</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
                             <div class="mt-1 p-2 bg-blue-50 text-blue-700 rounded font-mono text-xs">docs/SDD.md</div>
                             <div>
                                 <h5 class="font-bold text-slate-900">O Norte Técnico (O Presente)</h5>
-                                <p class="text-sm text-slate-500">A verdade absoluta técnica. Contém Arquitetura e Regras Inquebráveis. Usa tags HTML para esconder diagramas complexos.</p>
+                                <p class="text-sm text-slate-500">A verdade técnica do projeto: escopo, fluxos, arquitetura, regras importantes e critérios de qualidade e aceite.</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
                             <div class="mt-1 p-2 bg-amber-50 text-amber-700 rounded font-mono text-xs">docs/ROADMAP.md</div>
                             <div>
                                 <h5 class="font-bold text-slate-900">O Futuro (O Planejamento)</h5>
-                                <p class="text-sm text-slate-500">Onde moram as fases de transição, os débitos técnicos estruturados e as próximas tarefas (Checklists).</p>
+                                <p class="text-sm text-slate-500">Fases, backlog priorizado, tarefas, pendências e débitos técnicos. É daqui que a IA consome as próximas ações.</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
                             <div class="mt-1 p-2 bg-emerald-50 text-emerald-700 rounded font-mono text-xs">docs/CHANGELOG_EVIDENCES.md</div>
                             <div>
-                                <h5 class="font-bold text-slate-900">O Passado (As Evidências)</h5>
-                                <p class="text-sm text-slate-500">Registro automático de valor gerado. Formato estrito com hora: <em>AAAA-MM-DD · HH:MM — Mudança</em>.</p>
+                                <h5 class="font-bold text-slate-900">O Passado (Decisões & Evidências)</h5>
+                                <p class="text-sm text-slate-500">Histórico de decisões e valor gerado. Formato estrito com hora: <em>AAAA-MM-DD · HH:MM — Mudança</em>.</p>
                             </div>
                         </div>
                     </div>
@@ -151,7 +155,7 @@
                             <p class="text-indigo-400">meu-projeto/</p>
                             <p class="pl-4 border-l border-slate-700 ml-2 text-white">.cursorrules <span class="text-slate-500 text-xs ml-2">&lt;- Regras da IA</span></p>
                             <p class="pl-4 border-l border-slate-700 ml-2 text-indigo-400">docs/</p>
-                            <p class="pl-8 border-l border-slate-700 ml-2 text-blue-300">visao-projeto.html <span class="text-slate-500 text-xs ml-2">&lt;- UI para humanos</span></p>
+                            <p class="pl-8 border-l border-slate-700 ml-2 text-blue-300">visao-projeto.html <span class="text-slate-500 text-xs ml-2">&lt;- Interface visual</span></p>
                             <p class="pl-8 border-l border-slate-700 ml-2">SOBRE.md <span class="text-slate-500 text-xs ml-2">&lt;- Porta de Entrada</span></p>
                             <p class="pl-8 border-l border-slate-700 ml-2">SDD.md <span class="text-slate-500 text-xs ml-2">&lt;- O Norte Técnico</span></p>
                             <p class="pl-8 border-l border-slate-700 ml-2">ROADMAP.md <span class="text-slate-500 text-xs ml-2">&lt;- O Futuro</span></p>
@@ -160,36 +164,71 @@
                             <p class="pl-8 border-l border-slate-700 ml-2">... <span class="text-slate-500 text-xs ml-2">seu código limpo aqui</span></p>
                         </div>
                     </div>
+
+                    <div class="mt-6 bg-indigo-50 border border-indigo-100 text-indigo-900 p-5 rounded-xl text-sm leading-relaxed">
+                        <strong>Camada opcional:</strong> para projetos muito grandes, com múltiplos devs, regras críticas ou necessidade de specs formais, o time pode adicionar uma pasta extra de especificações. No fluxo padrão, porém, o D.N.E.E. Docs funciona apenas com a pasta <code class="bg-indigo-100 px-1 py-0.5 rounded">docs/</code>.
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- As 4 Abas Padronizadas -->
+        <section id="abas" class="scroll-mt-24">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4">As 4 Abas da Documentação Visual</h2>
+                <p class="text-lg text-slate-600">
+                    Todo projeto documentado com D.N.E.E. Docs tem uma página <code class="text-sm bg-slate-100 px-1.5 py-0.5 rounded">docs/visao-projeto.html</code> com <strong>exatamente 4 abas</strong>. Nada de abas extras como Discovery ou Specs: cada assunto tem um lugar fixo.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h4 class="text-lg font-bold mb-2">💡 Sobre o projeto</h4>
+                    <p class="text-sm text-slate-500">Renderiza o <code class="bg-slate-100 px-1 py-0.5 rounded">SOBRE.md</code>. Visão de negócio, público, valor e o Discovery resumido. É a aba padrão ao abrir.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h4 class="text-lg font-bold mb-2">🧭 Norte do projeto</h4>
+                    <p class="text-sm text-slate-500">Renderiza o <code class="bg-slate-100 px-1 py-0.5 rounded">SDD.md</code>. Critérios, regras, fluxos e estrutura técnica ficam todos aqui.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h4 class="text-lg font-bold mb-2">🗺️ Roadmap</h4>
+                    <p class="text-sm text-slate-500">Renderiza o <code class="bg-slate-100 px-1 py-0.5 rounded">ROADMAP.md</code>. Planejamento, tarefas, backlog e pendências.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h4 class="text-lg font-bold mb-2">📌 Decisões & Evidências</h4>
+                    <p class="text-sm text-slate-500">Renderiza o <code class="bg-slate-100 px-1 py-0.5 rounded">CHANGELOG_EVIDENCES.md</code>. Histórico, decisões e evidências de entrega.</p>
+                </div>
+            </div>
+            <p class="text-center text-sm text-slate-500 mt-6 max-w-2xl mx-auto">
+                Lembre: os <strong>.md são a fonte da verdade</strong>. A página visual só exibe. Sempre atualize primeiro o Markdown e depois a página, se necessário.
+            </p>
         </section>
 
         <!-- Como Aplicar (Abas) -->
         <section id="aplicacao" class="scroll-mt-24">
             <h2 class="text-3xl font-extrabold text-slate-900 mb-8 text-center">Como Aplicar na Prática</h2>
-            
+
             <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
                 <div class="flex border-b border-slate-100 bg-slate-50/50">
                     <button onclick="switchTab('novos')" id="tab-novos" class="flex-1 py-4 font-semibold text-indigo-600 border-b-2 border-indigo-600 transition">🌱 Projetos Novos</button>
                     <button onclick="switchTab('legados')" id="tab-legados" class="flex-1 py-4 font-semibold text-slate-500 hover:text-slate-700 transition">🏥 Projetos Existentes (Legados)</button>
                 </div>
-                
+
                 <div class="p-8">
                     <!-- Tab: Novos -->
                     <div id="content-novos" class="tab-content active space-y-6">
-                        <p class="text-slate-600">Em um projeto do zero, o objetivo é nascer com a governança correta.</p>
+                        <p class="text-slate-600">Em um projeto do zero, o objetivo é nascer com a governança correta: Discovery primeiro, arquivos depois.</p>
                         <ul class="space-y-4">
                             <li class="flex gap-4">
                                 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">1</span>
-                                <p class="text-slate-700 mt-1">Abra o chat do Cursor (Composer) no seu repositório limpo.</p>
+                                <p class="text-slate-700 mt-1">Abra o chat do Cursor no seu repositório limpo.</p>
                             </li>
                             <li class="flex gap-4">
                                 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">2</span>
-                                <p class="text-slate-700 mt-1">Copie o <strong>Mega-Prompt de Inicialização</strong> (abaixo) e envie para a IA.</p>
+                                <p class="text-slate-700 mt-1">Copie o <strong>Prompt de Projeto Novo</strong> (abaixo) e envie para a IA.</p>
                             </li>
                             <li class="flex gap-4">
                                 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">3</span>
-                                <p class="text-slate-700 mt-1">A IA criará a pasta <code>docs/</code>, o HTML, os artefatos base e aplicará a Constituição (<code>.cursorrules</code>).</p>
+                                <p class="text-slate-700 mt-1">A IA faz o mini-Discovery com você no chat e <strong>aguarda seu OK</strong> antes de criar qualquer arquivo.</p>
                             </li>
                             <li class="flex gap-4">
                                 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">4</span>
@@ -198,7 +237,7 @@
                         </ul>
 
                         <div class="mt-8 border-t border-slate-100 pt-6">
-                            <h3 class="font-bold text-lg text-slate-900 mb-2">🌱 Mega-Prompt de Inicialização (Copiar & Colar)</h3>
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">🌱 Prompt de Projeto Novo (Copiar & Colar)</h3>
                             <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group">
                                 <!-- Header Estilo macOS -->
                                 <div class="flex items-center justify-between px-4 py-3 bg-[#1E293B]">
@@ -213,26 +252,103 @@
                                     </button>
                                 </div>
                                 <!-- Código -->
-                                <pre class="p-6 text-indigo-300 text-sm font-mono leading-relaxed whitespace-pre-wrap break-words"><code id="code1">Cursor, vamos criar um projeto novo do zero usando a arquitetura D.N.E.E.
-Meu objetivo com este projeto é: [DESCREVA SUA IDEIA AQUI].
+                                <pre class="p-6 text-indigo-300 text-sm font-mono leading-relaxed whitespace-pre-wrap break-words"><code id="code1">Cursor, vamos iniciar um projeto novo usando o padrão D.N.E.E. Docs.
 
-Execute rigorosamente as tarefas abaixo:
-1. Crie o arquivo `.cursorrules` na raiz obrigando o fluxo D.N.E.E. 
-   - OBRIGUE a IA a usar tags HTML &lt;details&gt; para esconder diagramas mermaid gigantes.
-   - EXIJA o formato de data/hora no topo das evidências: `## AAAA-MM-DD · HH:MM — [Nome da mudança]`.
-2. Faça um mini-Discovery comigo aqui no chat (Problema, Valor, Solução, Sucesso) para alinhar a solução técnica. Aguarde meu OK.
-3. Após o meu OK, crie o `docs/SOBRE.md`. Ele é a porta de entrada de negócio (para stakeholders). 
-   - Deve conter: Em uma frase, Problema que resolve, Para quem é, O que faz hoje, Pitch curto (elevator), Momento atual, e Mapa das abas da documentação. 
-   - REGRAS: Emojis SÓ nos títulos (`#` e `##`), não no corpo. Sem jargão técnico. Ao final, linke "Detalhe técnico -&gt; SDD" e "Próximos passos -&gt; Roadmap".
-4. Crie o `docs/SDD.md` definindo Visão técnica, Arquitetura base e Regras de Negócio Inquebráveis.
-5. Crie o `docs/ROADMAP.md` com as tarefas iniciais e MVP.
-6. Crie `docs/visao-projeto.html`. REGRAS DE OURO PARA A UI (já aplique na criação):
-   - 4 abas funcionais (Sobre, Norte, Roadmap, Evidências) carregando os .md via marked.js. A aba "💡 Sobre o projeto" DEVE ser a PRIMEIRA e a PADRÃO ao abrir a página.
-   - Botão flutuante "Voltar ao topo" (canto inferior direito, aparece após ~300px de scroll, com animação suave).
-   - Estilo CSS para Checklists (`list-style: none` para evitar bullet duplo do markdown).
-   - Tratamento de Mermaid: Converta blocos ```mermaid para `&lt;div class="mermaid"&gt;`, chame `mermaid.run()`, e garanta o re-render ao expandir tags `&lt;details&gt;`.
-   - Bloqueio `file://`: Se aberto localmente sem servidor, exiba aviso amigável sugerindo `npm run docs:serve` ou servidor HTTP local.
-7. Inicie o `docs/CHANGELOG_EVIDENCES.md` com o registro desta inicialização.</code></pre>
+Meu objetivo com este projeto é:
+[DESCREVA SUA IDEIA AQUI]
+
+Antes de criar arquivos ou código, faça um mini-Discovery comigo no chat.
+
+Responda primeiro:
+
+1. Qual problema este projeto resolve?
+2. Quem será impactado ou beneficiado?
+3. Qual é a hipótese de valor?
+4. Qual solução inicial faz sentido?
+5. Quais seriam os critérios de sucesso?
+6. Quais informações ainda precisam ser validadas?
+
+Use a marcação [A VALIDAR] para tudo que não estiver claro.
+Não invente informações para parecer completo.
+Ao final, me faça perguntas objetivas para complementar o projeto.
+
+Aguarde meu OK antes de criar arquivos.
+
+Após meu OK, crie a estrutura obrigatória:
+
+.cursorrules
+
+docs/
+  visao-projeto.html
+  SOBRE.md
+  SDD.md
+  ROADMAP.md
+  CHANGELOG_EVIDENCES.md
+
+Regras obrigatórias:
+
+1. A fonte da verdade são os arquivos Markdown.
+2. A página docs/visao-projeto.html é apenas a interface visual.
+3. Sempre atualize primeiro os .md e depois a página visual, se necessário.
+4. A página visual deve ter exatamente 4 abas:
+   - 💡 Sobre o projeto
+   - 🧭 Norte do projeto
+   - 🗺️ Roadmap
+   - 📌 Decisões & Evidências
+5. A aba "💡 Sobre o projeto" deve abrir por padrão.
+6. A página deve ter layout padronizado, limpo, responsivo e independente da identidade visual da ferramenta.
+7. Não copie o layout do produto. Use sempre o padrão D.N.E.E. Docs.
+8. Se não souber algo, registre como [A VALIDAR] e crie uma seção "Pontos a complementar".
+9. Inicie o CHANGELOG_EVIDENCES.md com o registro da criação da documentação.
+
+Conteúdo mínimo dos arquivos:
+
+docs/SOBRE.md:
+- Em uma frase
+- Problema que resolve
+- Para quem é
+- O que faz hoje ou pretende fazer
+- Hipótese de valor
+- Discovery resumido
+- Pitch em 30 segundos
+- Momento atual
+- Mapa da documentação
+- Pontos a complementar
+
+docs/SDD.md:
+- Visão geral
+- Escopo atual
+- Fora de escopo
+- Fluxos principais
+- Arquitetura e stack inicial
+- Dados, entradas e saídas
+- Regras importantes
+- Critérios de qualidade
+- Riscos e pontos de atenção
+- Pontos a complementar
+
+docs/ROADMAP.md:
+- Status geral
+- Fase atual
+- Roadmap por fases
+- Backlog priorizado
+- Débitos ou riscos previstos
+- Próximas ações
+- Pontos a complementar
+
+docs/CHANGELOG_EVIDENCES.md:
+- Decisões relevantes
+- Evidências de entrega
+- Changelog
+- Métricas sugeridas
+- Pendências de validação
+
+No final, me entregue:
+1. Arquivos criados
+2. Resumo do projeto
+3. Pontos que ficaram [A VALIDAR]
+4. Perguntas para complementar
+5. Próximos passos recomendados</code></pre>
                             </div>
                         </div>
                     </div>
@@ -240,34 +356,34 @@ Execute rigorosamente as tarefas abaixo:
                     <!-- Tab: Legados -->
                     <div id="content-legados" class="tab-content space-y-6">
                         <div class="bg-amber-50 border border-amber-200 text-amber-800 p-4 rounded-lg text-sm mb-6">
-                            <strong>⚠️ Regra de Ouro:</strong> A documentação estética vem <em>depois</em> do contexto real. Não mande a IA criar um SDD cego.
+                            <strong>⚠️ Regra de Ouro:</strong> A documentação vem <em>depois</em> do contexto real. Não mande a IA criar documentação cega: primeiro o Raio-X, depois os arquivos.
                         </div>
                         <ul class="space-y-6">
                             <li class="flex gap-4">
                                 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold">1</span>
                                 <div>
                                     <h4 class="font-bold text-slate-900">O Raio-X (Mapeamento Atual)</h4>
-                                    <p class="text-slate-600 text-sm mt-1">Peça para a IA varrer o código: <em>"Cursor, faça um Raio-X do projeto. Quais funcionalidades existem, qual a estrutura do banco e onde estão os gargalos técnicos?"</em></p>
+                                    <p class="text-slate-600 text-sm mt-1">A IA varre o código e entrega no chat o estado real: funcionalidades, fluxos, stack, dados, regras percebidas e pontos frágeis — marcando o que for incerto.</p>
                                 </div>
                             </li>
                             <li class="flex gap-4">
                                 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold">2</span>
                                 <div>
-                                    <h4 class="font-bold text-slate-900">O Desvio de Rota (Opcional - Remapeamento)</h4>
-                                    <p class="text-slate-600 text-sm mt-1">Se o projeto vai sofrer mutação (ex: trocar o banco de dados), crie um arquivo base com as regras novas, peça para a IA cruzar com o Raio-X atual e listar os impactos no chat.</p>
+                                    <h4 class="font-bold text-slate-900">A Criação da Documentação</h4>
+                                    <p class="text-slate-600 text-sm mt-1">Após o seu OK, a IA cria o <code>.cursorrules</code> e a pasta <code>docs/</code> completa refletindo a realidade do projeto, não uma versão idealizada.</p>
                                 </div>
                             </li>
                             <li class="flex gap-4">
                                 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold">3</span>
                                 <div>
-                                    <h4 class="font-bold text-slate-900">A Refatoração Documental</h4>
-                                    <p class="text-slate-600 text-sm mt-1">Com o contexto entendido, envie o <strong>Prompt de Refatoração Documental</strong> (abaixo). A IA vai gerar o Canvas inteiro <code>(Sobre, SDD, Roadmap)</code> refletindo a realidade.</p>
+                                    <h4 class="font-bold text-slate-900">As Regras de Continuidade</h4>
+                                    <p class="text-slate-600 text-sm mt-1">O <code>.cursorrules</code> passa a obrigar o fluxo D.N.E.E. Docs em toda mudança relevante: ler os docs, fazer Discovery, aguardar aprovação, implementar e registrar evidência.</p>
                                 </div>
                             </li>
                         </ul>
 
                         <div class="mt-8 border-t border-slate-100 pt-6">
-                            <h3 class="font-bold text-lg text-slate-900 mb-2">🏥 Prompt de Refatoração Documental (Copiar & Colar)</h3>
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">🏥 Prompt de Projeto Existente (Copiar & Colar)</h3>
                             <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group">
                                 <div class="flex items-center justify-between px-4 py-3 bg-[#1E293B]">
                                     <div class="flex gap-2">
@@ -280,29 +396,171 @@ Execute rigorosamente as tarefas abaixo:
                                         Copiar Prompt
                                     </button>
                                 </div>
-                                <pre class="p-6 text-indigo-300 text-sm font-mono leading-relaxed whitespace-pre-wrap break-words"><code id="code2">Cursor, vamos aplicar a arquitetura de documentação D.N.E.E. neste projeto. Como ele já possui código, precisamos mapear a realidade antes de documentar.
+                                <pre class="p-6 text-indigo-300 text-sm font-mono leading-relaxed whitespace-pre-wrap break-words"><code id="code2">Cursor, vamos aplicar o padrão D.N.E.E. Docs neste projeto existente.
 
-PASSO 1: O Raio-X
-Faça uma varredura profunda no código. Me liste aqui no chat: 1) Funcionalidades estruturais atuais, 2) Estrutura do Banco de Dados/Dados, e 3) Principais débitos técnicos ou incompletudes.
-Aguarde o meu "OK" para prosseguir.
+Como o projeto já possui código, NÃO crie documentação cega.
+Primeiro faça um Raio-X real do projeto.
 
-PASSO 2: A Documentação (Após o meu OK)
-- Crie o `.cursorrules` exigindo o fluxo D.N.E.E.
-  - Regra de Evidências: Usar formato `## AAAA-MM-DD · HH:MM — [Nome da mudança]`.
-  - Regra de Estética: Esconder diagramas grandes em `&lt;details&gt;`.
-- Crie `docs/SOBRE.md` sendo a porta de entrada de negócio. Estrutura: Em uma frase, Problema, Para quem é, O que faz hoje, Momento atual. REGRAS: Emojis SÓ nos títulos, sem termos técnicos/arquitetura no corpo.
-- Crie `docs/ROADMAP.md` e coloque todos os débitos mapeados do Raio-X lá, com checkboxes.
-- Crie `docs/SDD.md` documentando o ESTADO TÉCNICO REAL do projeto (Arquitetura, Regras inquebráveis).
-- Crie `docs/visao-projeto.html`. REGRAS DE OURO PARA A UI (já aplique na criação):
-   - 4 abas funcionais (Sobre, Norte, Roadmap, Evidências). A aba "💡 Sobre o projeto" DEVE ser a PRIMEIRA e a PADRÃO ao abrir a página.
-   - Botão flutuante "Voltar ao topo" (canto inferior direito, aparece após ~300px de scroll).
-   - Estilo CSS para Checklists (`list-style: none`).
-   - Tratamento de Mermaid: Renderização nativa com suporte a re-render em tags `&lt;details&gt;`.
-   - Aviso de bloqueio protocolo `file://` pedindo servidor HTTP local.
-- Atualize `docs/CHANGELOG_EVIDENCES.md` documentando esta organização inicial.</code></pre>
+PASSO 1 — Raio-X do projeto
+
+Analise os arquivos, pastas, código, componentes, rotas, dados, integrações e configurações existentes.
+
+Me entregue no chat:
+
+1. Objetivo aparente do projeto
+2. Funcionalidades atuais
+3. Fluxos principais
+4. Estrutura de pastas
+5. Stack e tecnologias identificadas
+6. Dados, arquivos, APIs ou banco utilizados
+7. Regras de negócio percebidas
+8. Pontos frágeis, bugs, débitos ou incompletudes
+9. O que não ficou claro
+10. Perguntas que preciso responder
+
+Use obrigatoriamente estas marcações:
+
+- [A VALIDAR] quando algo precisar ser confirmado
+- [PERGUNTA AO RESPONSÁVEL] quando precisar de resposta humana
+- [HIPÓTESE — CONFIRMAR] quando houver uma hipótese provável, mas não validada
+
+Não invente.
+Não resuma demais.
+Não altere arquivos ainda.
+
+Aguarde meu OK para prosseguir.
+
+PASSO 2 — Criação da documentação
+
+Após meu OK, crie ou atualize a estrutura obrigatória:
+
+.cursorrules
+
+docs/
+  visao-projeto.html
+  SOBRE.md
+  SDD.md
+  ROADMAP.md
+  CHANGELOG_EVIDENCES.md
+
+Regras obrigatórias:
+
+1. A fonte da verdade são os arquivos Markdown.
+2. A página docs/visao-projeto.html é apenas a interface visual.
+3. Sempre atualize primeiro os .md e depois a página visual, se necessário.
+4. A página visual deve ter exatamente 4 abas:
+   - 💡 Sobre o projeto
+   - 🧭 Norte do projeto
+   - 🗺️ Roadmap
+   - 📌 Decisões & Evidências
+5. A aba "💡 Sobre o projeto" deve abrir por padrão.
+6. O layout da página deve ser padronizado e não deve copiar o layout visual do produto.
+7. O conteúdo deve refletir o estado real do projeto, não uma versão idealizada.
+8. Toda informação incerta deve ser marcada como [A VALIDAR].
+9. Ao final de cada arquivo, inclua "Pontos a complementar".
+10. Inicie ou atualize o CHANGELOG_EVIDENCES.md com o registro desta organização documental.
+
+Conteúdo mínimo dos arquivos:
+
+docs/SOBRE.md:
+- Em uma frase
+- Problema que resolve
+- Para quem é
+- O que faz hoje
+- Funcionalidades prontas
+- Funcionalidades parciais
+- Hipótese de valor
+- Discovery resumido
+- Pitch em 30 segundos
+- Momento atual
+- Mapa da documentação
+- Pontos a complementar
+
+docs/SDD.md:
+- Visão geral
+- Escopo atual
+- Fora de escopo
+- Fluxos principais reais
+- Arquitetura e stack identificadas
+- Dados, entradas e saídas
+- Regras de negócio percebidas
+- Critérios de qualidade
+- Riscos e pontos de atenção
+- Débitos estruturais
+- Pontos a complementar
+
+docs/ROADMAP.md:
+- Status geral
+- Fase atual
+- Roadmap por fases
+- Backlog priorizado
+- Bugs conhecidos
+- Débitos técnicos
+- Melhorias sugeridas
+- Próximas ações
+- Pontos a complementar
+
+docs/CHANGELOG_EVIDENCES.md:
+- Decisões relevantes
+- Evidências de entrega
+- Changelog
+- Métricas observadas ou sugeridas
+- Pendências de validação
+
+PASSO 3 — Regras para continuidade
+
+Atualize o .cursorrules para obrigar que, daqui em diante, toda mudança relevante siga este fluxo:
+
+1. Ler docs/SOBRE.md
+2. Ler docs/SDD.md
+3. Ler docs/ROADMAP.md
+4. Ler docs/CHANGELOG_EVIDENCES.md
+5. Fazer Discovery curto no chat
+6. Aguardar aprovação
+7. Implementar
+8. Atualizar o Markdown correspondente
+9. Atualizar docs/visao-projeto.html apenas se necessário
+10. Registrar decisão/evidência em CHANGELOG_EVIDENCES.md
+
+Nunca implementar mudança relevante sem atualizar a documentação relacionada.
+
+No final, me entregue:
+1. Arquivos criados ou alterados
+2. Resumo do estado atual documentado
+3. Principais débitos encontrados
+4. Pontos marcados como [A VALIDAR]
+5. Perguntas para complementar
+6. Próximas ações recomendadas</code></pre>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- O que fazer quando a IA não souber algo -->
+        <section id="duvidas-ia" class="scroll-mt-24">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-6">📚 O que fazer quando a IA não souber algo?</h2>
+                <p class="text-lg text-slate-600 mb-8">
+                    A IA não deve preencher lacunas inventando informações. Quando algo não estiver claro, ela deve registrar a dúvida e seguir com uma marcação padronizada.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <div class="inline-block px-3 py-1 bg-amber-100 text-amber-800 rounded-full font-mono text-xs font-bold mb-3">[A VALIDAR]</div>
+                        <p class="text-sm text-slate-500">Quando a informação precisa ser confirmada.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <div class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full font-mono text-xs font-bold mb-3">[PERGUNTA AO RESPONSÁVEL]</div>
+                        <p class="text-sm text-slate-500">Quando a IA precisa de uma resposta humana para continuar.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <div class="inline-block px-3 py-1 bg-purple-100 text-purple-800 rounded-full font-mono text-xs font-bold mb-3">[HIPÓTESE — CONFIRMAR]</div>
+                        <p class="text-sm text-slate-500">Quando existe uma hipótese provável, mas ela ainda não foi validada.</p>
+                    </div>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-100 text-emerald-900 p-5 rounded-xl text-sm leading-relaxed">
+                    Todo arquivo Markdown deve terminar com uma seção <strong>"Pontos a complementar"</strong>. Assim, a documentação nunca fica falsa: ela fica viva, rastreável e aberta para evolução.
                 </div>
             </div>
         </section>
@@ -311,7 +569,7 @@ PASSO 2: A Documentação (Após o meu OK)
         <section id="dia-a-dia" class="scroll-mt-24 pb-24">
             <h2 class="text-3xl font-extrabold text-slate-900 mb-8">🔄 Rotina & Manutenção (O Dia a Dia)</h2>
             <p class="text-lg text-slate-600 mb-8">Depois que o projeto está estruturado, você usará os prompts abaixo no dia a dia para consumir tarefas e manter a IA na rédea curta.</p>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Prompt 3: Tarefa Diária -->
                 <div class="flex flex-col">
@@ -329,8 +587,33 @@ PASSO 2: A Documentação (Após o meu OK)
                                 Copiar Prompt
                             </button>
                         </div>
-                        <pre class="p-6 text-indigo-300 text-sm font-mono leading-relaxed whitespace-pre-wrap break-words"><code id="code3">Cursor, vamos iniciar a próxima fase. Leia o `docs/ROADMAP.md`, pegue a primeira tarefa pendente de transição/épico atual e faça o Discovery aqui no chat (Problema, Solução, Impacto no Código). 
-Aguarde minha aprovação antes de gerar qualquer código. Após o código estar pronto, siga a regra de registrar a evidência no Changelog.</code></pre>
+                        <pre class="p-6 text-indigo-300 text-sm font-mono leading-relaxed whitespace-pre-wrap break-words"><code id="code3">Cursor, vamos executar a próxima tarefa do projeto seguindo o padrão D.N.E.E. Docs.
+
+Antes de mexer no código, leia:
+
+- docs/SOBRE.md
+- docs/SDD.md
+- docs/ROADMAP.md
+- docs/CHANGELOG_EVIDENCES.md
+
+Depois, escolha a próxima tarefa pendente mais relevante do ROADMAP.md e faça um Discovery curto no chat:
+
+1. Qual problema esta tarefa resolve?
+2. Qual parte do projeto será impactada?
+3. Qual solução você propõe?
+4. Quais arquivos provavelmente serão alterados?
+5. Quais riscos existem?
+6. Como vamos validar?
+7. Qual evidência deve ser registrada ao final?
+
+Aguarde minha aprovação antes de implementar.
+
+Depois da implementação:
+- Atualize o ROADMAP.md marcando a tarefa como concluída, se aplicável.
+- Atualize o SDD.md se alguma regra, fluxo ou arquitetura mudou.
+- Atualize o SOBRE.md se a funcionalidade mudou a percepção do produto.
+- Atualize o CHANGELOG_EVIDENCES.md com Antes, Depois, Decisão, Evidência e Próximos passos.
+- Atualize o docs/visao-projeto.html apenas se necessário.</code></pre>
                     </div>
                 </div>
 
@@ -350,8 +633,37 @@ Aguarde minha aprovação antes de gerar qualquer código. Após o código estar
                                 Copiar Prompt
                             </button>
                         </div>
-                        <pre class="p-6 text-indigo-300 text-sm font-mono leading-relaxed whitespace-pre-wrap break-words"><code id="code4">Cursor, você implementou a feature com sucesso mas quebrou a regra do nosso `.cursorrules`. 
-Vá agora no `docs/CHANGELOG_EVIDENCES.md` e registre a evidência da entrega que acabamos de fazer. OBRIGATÓRIO: Use o título no formato `## AAAA-MM-DD · HH:MM — [Nome da mudança]` e preencha Antes, Depois e Decisão. Se impactou regras, atualize o SDD. Se resolveu um débito, marque [x] no ROADMAP.md.</code></pre>
+                        <pre class="p-6 text-indigo-300 text-sm font-mono leading-relaxed whitespace-pre-wrap break-words"><code id="code4">Cursor, você implementou uma mudança, mas ainda falta atualizar a documentação conforme o padrão D.N.E.E. Docs.
+
+Revise a alteração feita e atualize obrigatoriamente:
+
+1. docs/ROADMAP.md
+   - Marque como concluído o item relacionado, se existir.
+   - Adicione pendências novas, se surgiram.
+
+2. docs/SDD.md
+   - Atualize regras, fluxos, dados, arquitetura ou critérios de qualidade se a mudança impactou algum desses pontos.
+
+3. docs/SOBRE.md
+   - Atualize apenas se a mudança alterou a visão, público, valor, funcionalidades ou momento atual do projeto.
+
+4. docs/CHANGELOG_EVIDENCES.md
+   - Registre a entrega no formato:
+
+## AAAA-MM-DD · HH:MM — [Nome da mudança]
+
+### Antes
+### Depois
+### Decisão
+### Evidência
+### Impacto observado
+### Próximos passos
+
+5. docs/visao-projeto.html
+   - Atualize apenas se houve mudança de layout, abas, renderização ou conteúdo visual estático.
+
+Não invente métricas.
+Se não houver evidência real, registre como [A VALIDAR] e indique qual evidência precisa ser coletada.</code></pre>
                     </div>
                 </div>
             </div>
@@ -366,12 +678,10 @@ Vá agora no `docs/CHANGELOG_EVIDENCES.md` e registre a evidência da entrega qu
     <script>
         // Lógica de Abas
         function switchTab(tabId) {
-            // Remove active de todos os botões e conteúdos
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.getElementById('tab-novos').className = "flex-1 py-4 font-semibold text-slate-500 hover:text-slate-700 transition";
             document.getElementById('tab-legados').className = "flex-1 py-4 font-semibold text-slate-500 hover:text-slate-700 transition";
-            
-            // Ativa o selecionado
+
             document.getElementById('content-' + tabId).classList.add('active');
             document.getElementById('tab-' + tabId).className = "flex-1 py-4 font-semibold text-indigo-600 border-b-2 border-indigo-600 transition";
         }
@@ -379,21 +689,20 @@ Vá agora no `docs/CHANGELOG_EVIDENCES.md` e registre a evidência da entrega qu
         // Lógica de Copiar para a Área de Transferência
         function copyToClipboard(elementId, buttonElem) {
             const codeText = document.getElementById(elementId).innerText;
-            
-            // Cria elemento temporario e usa execCommand (fallback seguro p/ iframe)
+
+            // execCommand como fallback seguro para contextos em iframe
             const textArea = document.createElement("textarea");
             textArea.value = codeText;
             document.body.appendChild(textArea);
             textArea.select();
-            
+
             try {
                 document.execCommand('copy');
-                
-                // Feedback visual no botão
+
                 const originalHTML = buttonElem.innerHTML;
                 buttonElem.innerHTML = `<svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Copiado!`;
                 buttonElem.classList.add('bg-slate-900');
-                
+
                 setTimeout(() => {
                     buttonElem.innerHTML = originalHTML;
                     buttonElem.classList.remove('bg-slate-900');
@@ -401,7 +710,7 @@ Vá agora no `docs/CHANGELOG_EVIDENCES.md` e registre a evidência da entrega qu
             } catch (err) {
                 console.error('Falha ao copiar', err);
             }
-            
+
             document.body.removeChild(textArea);
         }
 
