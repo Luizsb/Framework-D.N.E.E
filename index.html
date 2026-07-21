@@ -6,6 +6,17 @@
     <title>Framework D.N.E.E. Docs | Guia Interativo</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' };
+        // Aplica o tema salvo antes do primeiro paint para evitar flash
+        (function () {
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (saved === 'dark' || (!saved && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
@@ -17,15 +28,51 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        html { scroll-behavior: smooth; }
+
+        /* Gradiente com stops mais claros no dark para manter contraste */
+        .dark .gradient-text {
+            background: linear-gradient(135deg, #818CF8 0%, #22D3EE 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scroll-spy: link da seção visível */
+        .nav-link.active { color: #4F46E5; }
+        .dark .nav-link.active { color: #A5B4FC; }
+
+        /* Foco visível para navegação por teclado */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid #6366F1;
+            outline-offset: 2px;
+            border-radius: 6px;
+        }
+
+        /* Reveal ao rolar */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .6s cubic-bezier(.22, .61, .36, 1), transform .6s cubic-bezier(.22, .61, .36, 1);
+        }
+        .reveal.revealed { opacity: 1; transform: none; }
+
+        /* Acessibilidade: desliga animações para quem pediu menos movimento */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+            .tab-content.active { animation: none; }
+            * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 antialiased selection:bg-indigo-100 selection:text-indigo-900 dark:selection:bg-indigo-800 dark:selection:text-indigo-100 transition-colors duration-200">
 
     <!-- Header / Hero -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+    <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 transition-colors duration-200">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col lg:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
-                <svg class="w-11 h-11 drop-shadow-sm" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo D.N.E.E. Docs">
+                <svg class="w-10 h-10 drop-shadow-sm" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo D.N.E.E. Docs">
                     <defs>
                         <linearGradient id="logo-g" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
                             <stop offset="0" stop-color="#4F46E5"/>
@@ -39,19 +86,22 @@
                     <path d="M28.5 32.5 23.5 37.5l5 5" stroke="#4F46E5" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="m35.5 32.5 5 5-5 5" stroke="#4F46E5" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <div>
-                    <h1 class="text-2xl font-bold tracking-tight">Framework <span class="gradient-text">D.N.E.E. Docs</span></h1>
-                    <p class="text-xs text-slate-500">Um processo leve para documentar, evoluir e manter projetos com apoio de IA.</p>
-                </div>
+                <h1 class="text-2xl font-bold tracking-tight whitespace-nowrap">Framework <span class="gradient-text">D.N.E.E. Docs</span></h1>
             </div>
-            <nav class="flex flex-wrap gap-6 text-sm font-medium text-slate-600">
-                <a href="#conceito" class="hover:text-indigo-600 transition">O Conceito</a>
-                <a href="#arquitetura" class="hover:text-indigo-600 transition">A Estrutura</a>
-                <a href="#abas" class="hover:text-indigo-600 transition">As 4 Abas</a>
-                <a href="#aplicacao" class="hover:text-indigo-600 transition">Como Aplicar</a>
-                <a href="#duvidas-ia" class="hover:text-indigo-600 transition">Dúvidas da IA</a>
-                <a href="#dia-a-dia" class="hover:text-indigo-600 transition">Dia a Dia</a>
-            </nav>
+            <div class="flex items-center justify-center flex-wrap gap-x-5 gap-y-2">
+                <nav class="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium text-slate-600 dark:text-slate-300">
+                    <a href="#conceito" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition">O Conceito</a>
+                    <a href="#arquitetura" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition">A Estrutura</a>
+                    <a href="#abas" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition">As 4 Abas</a>
+                    <a href="#aplicacao" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition">Como Aplicar</a>
+                    <a href="#duvidas-ia" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition">Dúvidas da IA</a>
+                    <a href="#dia-a-dia" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition">Dia a Dia</a>
+                </nav>
+                <button id="themeToggle" onclick="toggleTheme()" aria-label="Alternar entre tema claro e escuro" title="Alternar tema" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -60,45 +110,45 @@
         <!-- O Conceito -->
         <section id="conceito" class="scroll-mt-24">
             <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-sm font-bold tracking-widest text-indigo-600 uppercase mb-3">O Problema & A Solução</h2>
-                <h3 class="text-4xl font-extrabold text-slate-900 mb-6">Documentação viva para projetos feitos com IA.</h3>
-                <p class="text-lg text-slate-600 leading-relaxed">
-                    A IA acelera a criação de código, mas sem documentação viva ela também pode gerar <strong class="text-slate-900">perda de contexto, decisões soltas e retrabalho</strong>. O D.N.E.E. Docs cria um fluxo simples para descobrir o problema, nortear o projeto, planejar mudanças e registrar evidências.
+                <h2 class="text-sm font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-3">O Problema & A Solução</h2>
+                <h3 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-6">Documentação viva para projetos feitos com IA.</h3>
+                <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                    A IA acelera a criação de código, mas sem documentação viva ela também pode gerar <strong class="text-slate-900 dark:text-white">perda de contexto, decisões soltas e retrabalho</strong>. O D.N.E.E. Docs cria um fluxo simples para descobrir o problema, nortear o projeto, planejar mudanças e registrar evidências.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Card 1 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
+                <div class="group bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-500/15 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
                     <h4 class="text-xl font-bold mb-2">1. Descobrir</h4>
-                    <p class="text-sm text-slate-500">A IA avalia o problema, levanta a hipótese de valor e propõe a solução no chat <strong>antes</strong> de tocar no código.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">A IA avalia o problema, levanta a hipótese de valor e propõe a solução no chat <strong>antes</strong> de tocar no código.</p>
                 </div>
                 <!-- Card 2 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4">
+                <div class="group bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                     </div>
                     <h4 class="text-xl font-bold mb-2">2. Nortear</h4>
-                    <p class="text-sm text-slate-500">A IA lê o <strong>Norte do projeto (SDD.md)</strong> para garantir que a solução proposta respeita as regras e a arquitetura vigentes.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">A IA lê o <strong>Norte do projeto (SDD.md)</strong> para garantir que a solução proposta respeita as regras e a arquitetura vigentes.</p>
                 </div>
                 <!-- Card 3 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-4">
+                <div class="group bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
                     </div>
                     <h4 class="text-xl font-bold mb-2">3. Especificar</h4>
-                    <p class="text-sm text-slate-500">A IA transforma a solução aprovada em tarefas claras no <strong>ROADMAP.md</strong>, critérios de aceite no <strong>SDD.md</strong> e próximos passos controlados antes de gerar código.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">A IA transforma a solução aprovada em tarefas claras no <strong>ROADMAP.md</strong>, critérios de aceite no <strong>SDD.md</strong> e próximos passos controlados antes de gerar código.</p>
                 </div>
                 <!-- Card 4 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
+                <div class="group bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
                     <h4 class="text-xl font-bold mb-2">4. Evidenciar</h4>
-                    <p class="text-sm text-slate-500">Após sucesso, a IA documenta automaticamente o <strong>Antes, Depois e a Decisão</strong> no CHANGELOG_EVIDENCES.md.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">Após sucesso, a IA documenta automaticamente o <strong>Antes, Depois e a Decisão</strong> no CHANGELOG_EVIDENCES.md.</p>
                 </div>
             </div>
         </section>
@@ -107,57 +157,57 @@
         <section id="arquitetura" class="scroll-mt-24">
             <div class="flex flex-col lg:flex-row gap-12 items-center">
                 <div class="lg:w-1/2">
-                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">A Estrutura de Arquivos <br><span class="text-indigo-600">(simples e padronizada)</span></h2>
-                    <p class="text-lg text-slate-600 mb-8">
-                        A regra de ouro: <strong>a fonte da verdade são os arquivos Markdown</strong> dentro de <code class="text-sm bg-slate-100 px-1.5 py-0.5 rounded">docs/</code>. A página <code class="text-sm bg-slate-100 px-1.5 py-0.5 rounded">visao-projeto.html</code> é apenas a interface visual para leitura humana. Nada além disso é obrigatório.
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">A Estrutura de Arquivos <br><span class="text-indigo-600 dark:text-indigo-400">(simples e padronizada)</span></h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-300 mb-8">
+                        A regra de ouro: <strong>a fonte da verdade são os arquivos Markdown</strong> dentro de <code class="text-sm bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">docs/</code>. A página <code class="text-sm bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">visao-projeto.html</code> é apenas a interface visual para leitura humana. Nada além disso é obrigatório.
                     </p>
                     <div class="space-y-4">
-                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                            <div class="mt-1 p-2 bg-slate-100 rounded text-slate-600 font-mono text-xs">.cursorrules</div>
+                        <div class="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors duration-300">
+                            <div class="mt-1 p-2 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-300 font-mono text-xs">.cursorrules</div>
                             <div>
-                                <h5 class="font-bold text-slate-900">A Constituição (O Maestro)</h5>
-                                <p class="text-sm text-slate-500">Arquivo raiz que obriga a IA a seguir o processo D.N.E.E. Docs, pensar como PM e manter a documentação sempre atualizada.</p>
+                                <h5 class="font-bold text-slate-900 dark:text-white">A Constituição (O Maestro)</h5>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Arquivo raiz que obriga a IA a seguir o processo D.N.E.E. Docs, pensar como PM e manter a documentação sempre atualizada.</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                            <div class="mt-1 p-2 bg-indigo-50 text-indigo-700 rounded font-mono text-xs">docs/visao-projeto.html</div>
+                        <div class="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors duration-300">
+                            <div class="mt-1 p-2 bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 rounded font-mono text-xs">docs/visao-projeto.html</div>
                             <div>
-                                <h5 class="font-bold text-slate-900">A Interface Visual</h5>
-                                <p class="text-sm text-slate-500">Um HTML que renderiza os arquivos Markdown num painel de 4 abas. Feito para humanos (gestores, QA, time). Não é fonte da verdade: só exibe.</p>
+                                <h5 class="font-bold text-slate-900 dark:text-white">A Interface Visual</h5>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Um HTML que renderiza os arquivos Markdown num painel de 4 abas. Feito para humanos (gestores, QA, time). Não é fonte da verdade: só exibe.</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                            <div class="mt-1 p-2 bg-pink-50 text-pink-700 rounded font-mono text-xs">docs/SOBRE.md</div>
+                        <div class="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors duration-300">
+                            <div class="mt-1 p-2 bg-pink-50 dark:bg-pink-500/15 text-pink-700 dark:text-pink-300 rounded font-mono text-xs">docs/SOBRE.md</div>
                             <div>
-                                <h5 class="font-bold text-slate-900">O Pitch (A Porta de Entrada)</h5>
-                                <p class="text-sm text-slate-500">A visão de negócio: problema, público e valor em linguagem leiga. O Discovery resumido também mora aqui. É a aba padrão.</p>
+                                <h5 class="font-bold text-slate-900 dark:text-white">O Pitch (A Porta de Entrada)</h5>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">A visão de negócio: problema, público e valor em linguagem leiga. O Discovery resumido também mora aqui. É a aba padrão.</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                            <div class="mt-1 p-2 bg-blue-50 text-blue-700 rounded font-mono text-xs">docs/SDD.md</div>
+                        <div class="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors duration-300">
+                            <div class="mt-1 p-2 bg-blue-50 dark:bg-blue-500/15 text-blue-700 dark:text-blue-300 rounded font-mono text-xs">docs/SDD.md</div>
                             <div>
-                                <h5 class="font-bold text-slate-900">O Norte Técnico (O Presente)</h5>
-                                <p class="text-sm text-slate-500">A verdade técnica do projeto: escopo, fluxos, arquitetura, regras importantes e critérios de qualidade e aceite.</p>
+                                <h5 class="font-bold text-slate-900 dark:text-white">O Norte Técnico (O Presente)</h5>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">A verdade técnica do projeto: escopo, fluxos, arquitetura, regras importantes e critérios de qualidade e aceite.</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                            <div class="mt-1 p-2 bg-amber-50 text-amber-700 rounded font-mono text-xs">docs/ROADMAP.md</div>
+                        <div class="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors duration-300">
+                            <div class="mt-1 p-2 bg-amber-50 dark:bg-amber-500/15 text-amber-700 dark:text-amber-300 rounded font-mono text-xs">docs/ROADMAP.md</div>
                             <div>
-                                <h5 class="font-bold text-slate-900">O Futuro (O Planejamento)</h5>
-                                <p class="text-sm text-slate-500">Fases, backlog priorizado, tarefas, pendências e débitos técnicos. É daqui que a IA consome as próximas ações.</p>
+                                <h5 class="font-bold text-slate-900 dark:text-white">O Futuro (O Planejamento)</h5>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Fases, backlog priorizado, tarefas, pendências e débitos técnicos. É daqui que a IA consome as próximas ações.</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-                            <div class="mt-1 p-2 bg-emerald-50 text-emerald-700 rounded font-mono text-xs">docs/CHANGELOG_EVIDENCES.md</div>
+                        <div class="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors duration-300">
+                            <div class="mt-1 p-2 bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 rounded font-mono text-xs">docs/CHANGELOG_EVIDENCES.md</div>
                             <div>
-                                <h5 class="font-bold text-slate-900">O Passado (Decisões & Evidências)</h5>
-                                <p class="text-sm text-slate-500">Histórico de decisões e valor gerado. Formato estrito com hora: <em>AAAA-MM-DD · HH:MM — Mudança</em>.</p>
+                                <h5 class="font-bold text-slate-900 dark:text-white">O Passado (Decisões & Evidências)</h5>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Histórico de decisões e valor gerado. Formato estrito com hora: <em>AAAA-MM-DD · HH:MM — Mudança</em>.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="lg:w-1/2 w-full">
-                    <div class="bg-slate-900 rounded-2xl p-6 shadow-xl text-slate-300 font-mono text-sm">
+                    <div class="bg-slate-900 rounded-2xl p-6 shadow-xl text-slate-300 font-mono text-sm border border-transparent dark:border-slate-700/80">
                         <div class="flex gap-2 mb-4">
                             <div class="w-3 h-3 rounded-full bg-red-500"></div>
                             <div class="w-3 h-3 rounded-full bg-amber-500"></div>
@@ -165,20 +215,20 @@
                         </div>
                         <div class="space-y-2">
                             <p class="text-indigo-400">meu-projeto/</p>
-                            <p class="pl-4 border-l border-slate-700 ml-2 text-white">.cursorrules <span class="text-slate-500 text-xs ml-2">&lt;- Regras da IA</span></p>
+                            <p class="pl-4 border-l border-slate-700 ml-2 text-white">.cursorrules <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- Regras da IA</span></p>
                             <p class="pl-4 border-l border-slate-700 ml-2 text-indigo-400">docs/</p>
-                            <p class="pl-8 border-l border-slate-700 ml-2 text-blue-300">visao-projeto.html <span class="text-slate-500 text-xs ml-2">&lt;- Interface visual</span></p>
-                            <p class="pl-8 border-l border-slate-700 ml-2">SOBRE.md <span class="text-slate-500 text-xs ml-2">&lt;- Porta de Entrada</span></p>
-                            <p class="pl-8 border-l border-slate-700 ml-2">SDD.md <span class="text-slate-500 text-xs ml-2">&lt;- O Norte Técnico</span></p>
-                            <p class="pl-8 border-l border-slate-700 ml-2">ROADMAP.md <span class="text-slate-500 text-xs ml-2">&lt;- O Futuro</span></p>
-                            <p class="pl-8 border-l border-slate-700 ml-2">CHANGELOG_EVIDENCES.md <span class="text-slate-500 text-xs ml-2">&lt;- O Passado</span></p>
+                            <p class="pl-8 border-l border-slate-700 ml-2 text-blue-300">visao-projeto.html <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- Interface visual</span></p>
+                            <p class="pl-8 border-l border-slate-700 ml-2">SOBRE.md <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- Porta de Entrada</span></p>
+                            <p class="pl-8 border-l border-slate-700 ml-2">SDD.md <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- O Norte Técnico</span></p>
+                            <p class="pl-8 border-l border-slate-700 ml-2">ROADMAP.md <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- O Futuro</span></p>
+                            <p class="pl-8 border-l border-slate-700 ml-2">CHANGELOG_EVIDENCES.md <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- O Passado</span></p>
                             <p class="pl-4 border-l border-slate-700 ml-2 text-indigo-400">src/</p>
-                            <p class="pl-8 border-l border-slate-700 ml-2">... <span class="text-slate-500 text-xs ml-2">seu código limpo aqui</span></p>
+                            <p class="pl-8 border-l border-slate-700 ml-2">... <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">seu código limpo aqui</span></p>
                         </div>
                     </div>
 
-                    <div class="mt-6 bg-indigo-50 border border-indigo-100 text-indigo-900 p-5 rounded-xl text-sm leading-relaxed">
-                        <strong>Camada opcional:</strong> para projetos muito grandes, com múltiplos devs, regras críticas ou necessidade de specs formais, o time pode adicionar uma pasta extra de especificações. No fluxo padrão, porém, o D.N.E.E. Docs funciona apenas com a pasta <code class="bg-indigo-100 px-1 py-0.5 rounded">docs/</code>.
+                    <div class="mt-6 bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-100 dark:border-indigo-500/30 text-indigo-900 dark:text-indigo-200 p-5 rounded-xl text-sm leading-relaxed">
+                        <strong>Camada opcional:</strong> para projetos muito grandes, com múltiplos devs, regras críticas ou necessidade de specs formais, o time pode adicionar uma pasta extra de especificações. No fluxo padrão, porém, o D.N.E.E. Docs funciona apenas com a pasta <code class="bg-indigo-100 dark:bg-indigo-500/20 px-1 py-0.5 rounded">docs/</code>.
                     </div>
                 </div>
             </div>
@@ -187,72 +237,72 @@
         <!-- As 4 Abas Padronizadas -->
         <section id="abas" class="scroll-mt-24">
             <div class="text-center max-w-3xl mx-auto mb-10">
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-4">As 4 Abas da Documentação Visual</h2>
-                <p class="text-lg text-slate-600">
-                    Todo projeto documentado com D.N.E.E. Docs tem uma página <code class="text-sm bg-slate-100 px-1.5 py-0.5 rounded">docs/visao-projeto.html</code> com <strong>exatamente 4 abas</strong>. Nada de abas extras como Discovery ou Specs: cada assunto tem um lugar fixo.
+                <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">As 4 Abas da Documentação Visual</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-300">
+                    Todo projeto documentado com D.N.E.E. Docs tem uma página <code class="text-sm bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">docs/visao-projeto.html</code> com <strong>exatamente 4 abas</strong>. Nada de abas extras como Discovery ou Specs: cada assunto tem um lugar fixo.
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all duration-300">
                     <h4 class="text-lg font-bold mb-2">💡 Sobre o projeto</h4>
-                    <p class="text-sm text-slate-500">Renderiza o <code class="bg-slate-100 px-1 py-0.5 rounded">SOBRE.md</code>. Visão de negócio, público, valor e o Discovery resumido. É a aba padrão ao abrir.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">Renderiza o <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded">SOBRE.md</code>. Visão de negócio, público, valor e o Discovery resumido. É a aba padrão ao abrir.</p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all duration-300">
                     <h4 class="text-lg font-bold mb-2">🧭 Norte do projeto</h4>
-                    <p class="text-sm text-slate-500">Renderiza o <code class="bg-slate-100 px-1 py-0.5 rounded">SDD.md</code>. Critérios, regras, fluxos e estrutura técnica ficam todos aqui.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">Renderiza o <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded">SDD.md</code>. Critérios, regras, fluxos e estrutura técnica ficam todos aqui.</p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all duration-300">
                     <h4 class="text-lg font-bold mb-2">🗺️ Roadmap</h4>
-                    <p class="text-sm text-slate-500">Renderiza o <code class="bg-slate-100 px-1 py-0.5 rounded">ROADMAP.md</code>. Planejamento, tarefas, backlog e pendências.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">Renderiza o <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded">ROADMAP.md</code>. Planejamento, tarefas, backlog e pendências.</p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all duration-300">
                     <h4 class="text-lg font-bold mb-2">📌 Decisões & Evidências</h4>
-                    <p class="text-sm text-slate-500">Renderiza o <code class="bg-slate-100 px-1 py-0.5 rounded">CHANGELOG_EVIDENCES.md</code>. Histórico, decisões e evidências de entrega.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">Renderiza o <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded">CHANGELOG_EVIDENCES.md</code>. Histórico, decisões e evidências de entrega.</p>
                 </div>
             </div>
-            <p class="text-center text-sm text-slate-500 mt-6 max-w-2xl mx-auto">
+            <p class="text-center text-sm text-slate-500 dark:text-slate-400 mt-6 max-w-2xl mx-auto">
                 Lembre: os <strong>.md são a fonte da verdade</strong>. A página visual só exibe. Sempre atualize primeiro o Markdown e depois a página, se necessário.
             </p>
         </section>
 
         <!-- Como Aplicar (Abas) -->
         <section id="aplicacao" class="scroll-mt-24">
-            <h2 class="text-3xl font-extrabold text-slate-900 mb-8 text-center">Como Aplicar na Prática</h2>
+            <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-8 text-center">Como Aplicar na Prática</h2>
 
-            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                <div class="flex border-b border-slate-100 bg-slate-50/50">
-                    <button onclick="switchTab('novos')" id="tab-novos" class="flex-1 py-4 font-semibold text-indigo-600 border-b-2 border-indigo-600 transition">🌱 Projetos Novos</button>
-                    <button onclick="switchTab('legados')" id="tab-legados" class="flex-1 py-4 font-semibold text-slate-500 hover:text-slate-700 transition">🏥 Projetos Existentes (Legados)</button>
+            <div class="max-w-4xl mx-auto bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden">
+                <div class="flex border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40">
+                    <button onclick="switchTab('novos')" id="tab-novos" class="flex-1 py-4 font-semibold text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400 transition">🌱 Projetos Novos</button>
+                    <button onclick="switchTab('legados')" id="tab-legados" class="flex-1 py-4 font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition">🏥 Projetos Existentes (Legados)</button>
                 </div>
 
                 <div class="p-8">
                     <!-- Tab: Novos -->
                     <div id="content-novos" class="tab-content active space-y-6">
-                        <p class="text-slate-600">Em um projeto do zero, o objetivo é nascer com a governança correta: Discovery primeiro, arquivos depois.</p>
+                        <p class="text-slate-600 dark:text-slate-300">Em um projeto do zero, o objetivo é nascer com a governança correta: Discovery primeiro, arquivos depois.</p>
                         <ul class="space-y-4">
                             <li class="flex gap-4">
-                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">1</span>
-                                <p class="text-slate-700 mt-1">Abra o chat do Cursor no seu repositório limpo.</p>
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 flex items-center justify-center font-bold">1</span>
+                                <p class="text-slate-700 dark:text-slate-300 mt-1">Abra o chat do Cursor no seu repositório limpo.</p>
                             </li>
                             <li class="flex gap-4">
-                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">2</span>
-                                <p class="text-slate-700 mt-1">Copie o <strong>Prompt de Projeto Novo</strong> (abaixo) e envie para a IA.</p>
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 flex items-center justify-center font-bold">2</span>
+                                <p class="text-slate-700 dark:text-slate-300 mt-1">Copie o <strong>Prompt de Projeto Novo</strong> (abaixo) e envie para a IA.</p>
                             </li>
                             <li class="flex gap-4">
-                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">3</span>
-                                <p class="text-slate-700 mt-1">A IA faz o mini-Discovery com você no chat e <strong>aguarda seu OK</strong> antes de criar qualquer arquivo.</p>
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 flex items-center justify-center font-bold">3</span>
+                                <p class="text-slate-700 dark:text-slate-300 mt-1">A IA faz o mini-Discovery com você no chat e <strong>aguarda seu OK</strong> antes de criar qualquer arquivo.</p>
                             </li>
                             <li class="flex gap-4">
-                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">4</span>
-                                <p class="text-slate-700 mt-1"><strong>Inicie o desenvolvimento.</strong> Daqui pra frente a IA já está instruída a planejar antes de codar e registrar evidências sozinha.</p>
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 flex items-center justify-center font-bold">4</span>
+                                <p class="text-slate-700 dark:text-slate-300 mt-1"><strong>Inicie o desenvolvimento.</strong> Daqui pra frente a IA já está instruída a planejar antes de codar e registrar evidências sozinha.</p>
                             </li>
                         </ul>
 
                         <div class="mt-8 border-t border-slate-100 pt-6">
-                            <h3 class="font-bold text-lg text-slate-900 mb-2">🌱 Prompt de Projeto Novo (Copiar & Colar)</h3>
-                            <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group">
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">🌱 Prompt de Projeto Novo (Copiar & Colar)</h3>
+                            <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group border border-transparent dark:border-slate-700/80">
                                 <!-- Header Estilo macOS -->
-                                <div class="flex items-center justify-between px-4 py-3 bg-[#1E293B]">
+                                <div class="flex items-center justify-between px-5 py-4 bg-[#1E293B]">
                                     <div class="flex gap-2">
                                         <div class="w-3 h-3 rounded-full bg-red-500"></div>
                                         <div class="w-3 h-3 rounded-full bg-amber-500"></div>
@@ -367,37 +417,37 @@ No final, me entregue:
 
                     <!-- Tab: Legados -->
                     <div id="content-legados" class="tab-content space-y-6">
-                        <div class="bg-amber-50 border border-amber-200 text-amber-800 p-4 rounded-lg text-sm mb-6">
+                        <div class="bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 text-amber-800 dark:text-amber-200 p-4 rounded-lg text-sm mb-6">
                             <strong>⚠️ Regra de Ouro:</strong> A documentação vem <em>depois</em> do contexto real. Não mande a IA criar documentação cega: primeiro o Raio-X, depois os arquivos.
                         </div>
                         <ul class="space-y-6">
                             <li class="flex gap-4">
-                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold">1</span>
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center font-bold">1</span>
                                 <div>
-                                    <h4 class="font-bold text-slate-900">O Raio-X (Mapeamento Atual)</h4>
-                                    <p class="text-slate-600 text-sm mt-1">A IA varre o código e entrega no chat o estado real: funcionalidades, fluxos, stack, dados, regras percebidas e pontos frágeis — marcando o que for incerto.</p>
+                                    <h4 class="font-bold text-slate-900 dark:text-white">O Raio-X (Mapeamento Atual)</h4>
+                                    <p class="text-slate-600 dark:text-slate-300 text-sm mt-1">A IA varre o código e entrega no chat o estado real: funcionalidades, fluxos, stack, dados, regras percebidas e pontos frágeis — marcando o que for incerto.</p>
                                 </div>
                             </li>
                             <li class="flex gap-4">
-                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold">2</span>
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center font-bold">2</span>
                                 <div>
-                                    <h4 class="font-bold text-slate-900">A Criação da Documentação</h4>
-                                    <p class="text-slate-600 text-sm mt-1">Após o seu OK, a IA cria o <code>.cursorrules</code> e a pasta <code>docs/</code> completa refletindo a realidade do projeto, não uma versão idealizada.</p>
+                                    <h4 class="font-bold text-slate-900 dark:text-white">A Criação da Documentação</h4>
+                                    <p class="text-slate-600 dark:text-slate-300 text-sm mt-1">Após o seu OK, a IA cria o <code>.cursorrules</code> e a pasta <code>docs/</code> completa refletindo a realidade do projeto, não uma versão idealizada.</p>
                                 </div>
                             </li>
                             <li class="flex gap-4">
-                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold">3</span>
+                                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center font-bold">3</span>
                                 <div>
-                                    <h4 class="font-bold text-slate-900">As Regras de Continuidade</h4>
-                                    <p class="text-slate-600 text-sm mt-1">O <code>.cursorrules</code> passa a obrigar o fluxo D.N.E.E. Docs em toda mudança relevante: ler os docs, fazer Discovery, aguardar aprovação, implementar e registrar evidência.</p>
+                                    <h4 class="font-bold text-slate-900 dark:text-white">As Regras de Continuidade</h4>
+                                    <p class="text-slate-600 dark:text-slate-300 text-sm mt-1">O <code>.cursorrules</code> passa a obrigar o fluxo D.N.E.E. Docs em toda mudança relevante: ler os docs, fazer Discovery, aguardar aprovação, implementar e registrar evidência.</p>
                                 </div>
                             </li>
                         </ul>
 
                         <div class="mt-8 border-t border-slate-100 pt-6">
-                            <h3 class="font-bold text-lg text-slate-900 mb-2">🏥 Prompt de Projeto Existente (Copiar & Colar)</h3>
-                            <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group">
-                                <div class="flex items-center justify-between px-4 py-3 bg-[#1E293B]">
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">🏥 Prompt de Projeto Existente (Copiar & Colar)</h3>
+                            <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group border border-transparent dark:border-slate-700/80">
+                                <div class="flex items-center justify-between px-5 py-4 bg-[#1E293B]">
                                     <div class="flex gap-2">
                                         <div class="w-3 h-3 rounded-full bg-red-500"></div>
                                         <div class="w-3 h-3 rounded-full bg-amber-500"></div>
@@ -553,25 +603,25 @@ No final, me entregue:
         <!-- O que fazer quando a IA não souber algo -->
         <section id="duvidas-ia" class="scroll-mt-24">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-6">📚 O que fazer quando a IA não souber algo?</h2>
-                <p class="text-lg text-slate-600 mb-8">
+                <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">📚 O que fazer quando a IA não souber algo?</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-300 mb-8">
                     A IA não deve preencher lacunas inventando informações. Quando algo não estiver claro, ela deve registrar a dúvida e seguir com uma marcação padronizada.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="inline-block px-3 py-1 bg-amber-100 text-amber-800 rounded-full font-mono text-xs font-bold mb-3">[A VALIDAR]</div>
-                        <p class="text-sm text-slate-500">Quando a informação precisa ser confirmada.</p>
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all duration-300">
+                        <div class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-500/15 text-amber-800 dark:text-amber-300 rounded-full font-mono text-xs font-bold mb-3">[A VALIDAR]</div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Quando a informação precisa ser confirmada.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full font-mono text-xs font-bold mb-3">[PERGUNTA AO RESPONSÁVEL]</div>
-                        <p class="text-sm text-slate-500">Quando a IA precisa de uma resposta humana para continuar.</p>
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all duration-300">
+                        <div class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-500/15 text-blue-800 dark:text-blue-300 rounded-full font-mono text-xs font-bold mb-3">[PERGUNTA AO RESPONSÁVEL]</div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Quando a IA precisa de uma resposta humana para continuar.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="inline-block px-3 py-1 bg-purple-100 text-purple-800 rounded-full font-mono text-xs font-bold mb-3">[HIPÓTESE — CONFIRMAR]</div>
-                        <p class="text-sm text-slate-500">Quando existe uma hipótese provável, mas ela ainda não foi validada.</p>
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all duration-300">
+                        <div class="inline-block px-3 py-1 bg-purple-100 dark:bg-purple-500/15 text-purple-800 dark:text-purple-300 rounded-full font-mono text-xs font-bold mb-3">[HIPÓTESE — CONFIRMAR]</div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Quando existe uma hipótese provável, mas ela ainda não foi validada.</p>
                     </div>
                 </div>
-                <div class="bg-emerald-50 border border-emerald-100 text-emerald-900 p-5 rounded-xl text-sm leading-relaxed">
+                <div class="bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-100 dark:border-emerald-500/30 text-emerald-900 dark:text-emerald-200 p-5 rounded-xl text-sm leading-relaxed">
                     Todo arquivo Markdown deve terminar com uma seção <strong>"Pontos a complementar"</strong>. Assim, a documentação nunca fica falsa: ela fica viva, rastreável e aberta para evolução.
                 </div>
             </div>
@@ -579,16 +629,16 @@ No final, me entregue:
 
         <!-- Rotina & Manutenção -->
         <section id="dia-a-dia" class="scroll-mt-24 pb-24">
-            <h2 class="text-3xl font-extrabold text-slate-900 mb-8">🔄 Rotina & Manutenção (O Dia a Dia)</h2>
-            <p class="text-lg text-slate-600 mb-8">Depois que o projeto está estruturado, você usará os prompts abaixo no dia a dia para consumir tarefas e manter a IA na rédea curta.</p>
+            <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-8">🔄 Rotina & Manutenção (O Dia a Dia)</h2>
+            <p class="text-lg text-slate-600 dark:text-slate-300 mb-8">Depois que o projeto está estruturado, você usará os prompts abaixo no dia a dia para consumir tarefas e manter a IA na rédea curta.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Prompt 3: Tarefa Diária -->
                 <div class="flex flex-col">
-                    <h3 class="font-bold text-xl text-slate-900 mb-2">A. Executando o Roadmap 🚀</h3>
-                    <p class="text-sm text-slate-500 mb-4">Como consumir as pendências e gerar código de forma segura.</p>
-                    <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group flex-grow">
-                        <div class="flex items-center justify-between px-4 py-3 bg-[#1E293B]">
+                    <h3 class="font-bold text-xl text-slate-900 dark:text-white mb-2">A. Executando o Roadmap 🚀</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Como consumir as pendências e gerar código de forma segura.</p>
+                    <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group border border-transparent dark:border-slate-700/80 flex-grow">
+                        <div class="flex items-center justify-between px-5 py-4 bg-[#1E293B]">
                             <div class="flex gap-2">
                                 <div class="w-3 h-3 rounded-full bg-red-500"></div>
                                 <div class="w-3 h-3 rounded-full bg-amber-500"></div>
@@ -631,10 +681,10 @@ Depois da implementação:
 
                 <!-- Prompt 4: Correção (Chicote) -->
                 <div class="flex flex-col">
-                    <h3 class="font-bold text-xl text-slate-900 mb-2">B. Correção de Rota (O "Chicote") ⚡</h3>
-                    <p class="text-sm text-slate-500 mb-4">Use quando a IA codar certo, mas "esquecer" da documentação.</p>
-                    <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group flex-grow">
-                        <div class="flex items-center justify-between px-4 py-3 bg-[#1E293B]">
+                    <h3 class="font-bold text-xl text-slate-900 dark:text-white mb-2">B. Correção de Rota (O "Chicote") ⚡</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Use quando a IA codar certo, mas "esquecer" da documentação.</p>
+                    <div class="relative bg-[#0F172A] rounded-xl overflow-hidden shadow-lg group border border-transparent dark:border-slate-700/80 flex-grow">
+                        <div class="flex items-center justify-between px-5 py-4 bg-[#1E293B]">
                             <div class="flex gap-2">
                                 <div class="w-3 h-3 rounded-full bg-red-500"></div>
                                 <div class="w-3 h-3 rounded-full bg-amber-500"></div>
@@ -683,17 +733,17 @@ Se não houver evidência real, registre como [A VALIDAR] e indique qual evidên
     </main>
 
     <!-- Rodapé -->
-    <footer class="bg-white border-t border-slate-200">
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors duration-200">
         <div class="max-w-6xl mx-auto px-6 py-8 text-center space-y-2">
-            <p class="text-sm font-semibold text-slate-700">
+            <p class="text-sm font-semibold text-slate-700 dark:text-slate-200">
                 Framework D.N.E.E. Docs · Time <span class="gradient-text font-bold">Interações Digitais</span>
             </p>
-            <p class="text-sm text-slate-500">
-                Criado e mantido por <strong class="text-slate-700">Luiz Stival</strong>
+            <p class="text-sm text-slate-500 dark:text-slate-400">
+                Criado e mantido por <strong class="text-slate-700 dark:text-slate-200">Luiz Stival</strong>
             </p>
             <p class="text-xs text-slate-400">
                 Tem algum feedback, ajuste ou melhoria para o framework?
-                <a href="https://arco.enterprise.slack.com/team/U0830TU216H" target="_blank" rel="noopener" class="text-indigo-500 hover:text-indigo-600 underline underline-offset-2 transition">Fale comigo no Slack</a>.
+                <a href="https://arco.enterprise.slack.com/team/U0830TU216H" target="_blank" rel="noopener" class="text-indigo-500 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 underline underline-offset-2 transition">Fale comigo no Slack</a>.
             </p>
         </div>
     </footer>
@@ -707,11 +757,11 @@ Se não houver evidência real, registre como [A VALIDAR] e indique qual evidên
         // Lógica de Abas
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.getElementById('tab-novos').className = "flex-1 py-4 font-semibold text-slate-500 hover:text-slate-700 transition";
-            document.getElementById('tab-legados').className = "flex-1 py-4 font-semibold text-slate-500 hover:text-slate-700 transition";
+            document.getElementById('tab-novos').className = "flex-1 py-4 font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition";
+            document.getElementById('tab-legados').className = "flex-1 py-4 font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition";
 
             document.getElementById('content-' + tabId).classList.add('active');
-            document.getElementById('tab-' + tabId).className = "flex-1 py-4 font-semibold text-indigo-600 border-b-2 border-indigo-600 transition";
+            document.getElementById('tab-' + tabId).className = "flex-1 py-4 font-semibold text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400 transition";
         }
 
         // Lógica de Copiar para a Área de Transferência
@@ -753,6 +803,52 @@ Se não houver evidência real, registre como [A VALIDAR] e indique qual evidên
                 btn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
             }
         });
+
+        // Alternância de tema claro/escuro (persistida)
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        // Reveal ao rolar (com stagger nos cards e respeito a prefers-reduced-motion)
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduceMotion && 'IntersectionObserver' in window) {
+            const revealTargets = [];
+            document.querySelectorAll('main section').forEach(section => {
+                section.querySelectorAll(':scope > h2, :scope > p, :scope > div').forEach(child => {
+                    if (child.classList.contains('grid')) {
+                        Array.from(child.children).forEach((card, i) => {
+                            card.classList.add('reveal');
+                            card.style.transitionDelay = `${i * 90}ms`;
+                            revealTargets.push(card);
+                        });
+                    } else {
+                        child.classList.add('reveal');
+                        revealTargets.push(child);
+                    }
+                });
+            });
+            const revealObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+            revealTargets.forEach(el => revealObserver.observe(el));
+        }
+
+        // Scroll-spy: destaca no menu a seção visível
+        const navLinks = document.querySelectorAll('.nav-link');
+        const spyObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+                }
+            });
+        }, { rootMargin: '-30% 0px -60% 0px' });
+        document.querySelectorAll('main section[id]').forEach(s => spyObserver.observe(s));
     </script>
 </body>
 </html>
