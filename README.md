@@ -27,7 +27,7 @@ A IA acelera a criação de código, mas sem documentação viva ela também pod
 
 | Arquivo | Descrição |
 |---------|-----------|
-| [`index.html`](./index.html) | Guia interativo do padrão — conceito, estrutura, prompts prontos e rotina do dia a dia (com modo claro/escuro) |
+| [`index.html`](./index.html) | Guia interativo do padrão — conceito, estrutura, mapa do cérebro, prompts prontos e rotina do dia a dia (com modo claro/escuro) |
 
 **Site ao vivo:** [https://luizsb.github.io/Framework-D.N.E.E/](https://luizsb.github.io/Framework-D.N.E.E/)
 
@@ -37,24 +37,33 @@ Abra o HTML no navegador (ou o link acima) para navegar pelo guia (conceito, est
 
 ## A estrutura de arquivos
 
-A regra de ouro: **a fonte da verdade são os arquivos Markdown** dentro de `docs/`. A página `visao-projeto.html` é apenas a interface visual para leitura humana. Nada além disso é obrigatório:
+A regra de ouro: **a fonte da verdade são os arquivos Markdown** dentro de `docs/`. A página `visao-projeto.html` só exibe esses arquivos. O mapa do cérebro, em `graphify-out/`, é o contexto que a IA consulta:
 
 ```text
 meu-projeto/
-├── .cursorrules              ← A Constituição (obriga o fluxo D.N.E.E. Docs)
+├── .cursorrules                 ← A Constituição (obriga o fluxo D.N.E.E. Docs)
+├── .graphifyignore              ← O que fica de fora do mapa
+├── .cursor/rules/graphify.mdc   ← A IA consulta o mapa antes de vasculhar arquivos
 ├── docs/
-│   ├── visao-projeto.html    ← Interface visual (para humanos)
-│   ├── SOBRE.md              ← Pitch de negócio (porta de entrada)
-│   ├── SDD.md                ← Norte técnico (arquitetura + regras)
-│   ├── ROADMAP.md            ← Futuro (fases, débitos, tarefas)
-│   └── CHANGELOG_EVIDENCES.md← Passado (decisões e evidências)
+│   ├── visao-projeto.html       ← Interface visual (para humanos)
+│   ├── SOBRE.md                 ← Pitch de negócio (porta de entrada)
+│   ├── SDD.md                   ← Norte técnico (arquitetura + regras)
+│   ├── ROADMAP.md               ← Futuro (fases, débitos, tarefas)
+│   └── CHANGELOG_EVIDENCES.md   ← Passado (decisões e evidências)
+├── graphify-out/
+│   ├── GRAPH_REPORT.md          ← Mapa do cérebro (leitura ampla)
+│   ├── graph.html               ← Mapa visual
+│   └── graph.json               ← Grafo que a IA consulta
 └── src/
-    └── ...                   ← Seu código
+    └── ...                      ← Seu código
 ```
 
 | Artefato | Papel |
 |----------|--------|
 | `.cursorrules` | Constituição: força a IA a seguir o D.N.E.E. Docs, pensar como PM e manter a documentação atualizada |
+| `.cursor/rules/graphify.mdc` | Obriga a IA a consultar o mapa do cérebro antes de vasculhar o projeto |
+| `.graphifyignore` | Tira do mapa dependências, build, arquivos gerados e a própria pasta `graphify-out/` |
+| `graphify-out/` | Mapa do cérebro: `GRAPH_REPORT.md`, `graph.html` e `graph.json`. Cache, wiki e exportações extras ficam de fora |
 | `visao-projeto.html` | UI com exatamente 4 abas que renderiza os Markdown para gestores, QA e o time |
 | `SOBRE.md` | Visão de negócio em linguagem leiga (problema, público, valor e Discovery resumido) |
 | `SDD.md` | Verdade técnica — escopo, fluxos, arquitetura, regras e critérios de qualidade |
@@ -92,13 +101,13 @@ Todo arquivo Markdown termina com uma seção **"Pontos a complementar"** — a 
 1. Abra [`index.html`](./index.html) no navegador (ou o [site ao vivo](https://luizsb.github.io/Framework-D.N.E.E/))
 2. Vá em **Como Aplicar**
 3. Copie o prompt de **Projeto Novo** ou **Projeto Existente** e cole no Cursor
-4. Deixe a IA fazer o Discovery, montar a estrutura `docs/` + `.cursorrules` e siga o fluxo D.N.E.E. Docs em toda mudança relevante
+4. Deixe a IA fazer o Discovery, montar a estrutura `docs/` + `.cursorrules` + o mapa do cérebro (`graphify-out/`) e siga o fluxo D.N.E.E. Docs em toda mudança relevante
 
 ---
 
 ## Princípio
 
-> Documentação não é burocracia paralela — é o **contexto oficial** que a IA lê antes de mudar o sistema e registra depois de entregar valor.
+> Documentação não é burocracia paralela — é o **contexto oficial** que a IA lê antes de mudar o sistema. O mapa do cérebro (`graphify-out/`) é o atalho: a IA consulta o grafo, abre só o arquivo certo e registra a evidência depois.
 
 ---
 

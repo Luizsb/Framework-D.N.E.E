@@ -92,6 +92,7 @@
                 <nav class="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium text-slate-600 dark:text-slate-300">
                     <a href="#conceito" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition">O Conceito</a>
                     <a href="#arquitetura" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition">A Estrutura</a>
+                    <a href="#mapa" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition">O Mapa</a>
                     <a href="#abas" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition">As 4 Abas</a>
                     <a href="#aplicacao" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition">Como Aplicar</a>
                     <a href="#duvidas-ia" class="nav-link hover:text-indigo-600 dark:hover:text-indigo-400 transition">Dúvidas da IA</a>
@@ -159,7 +160,7 @@
                 <div class="lg:w-1/2">
                     <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-6">A Estrutura de Arquivos <br><span class="text-indigo-600 dark:text-indigo-400">(simples e padronizada)</span></h2>
                     <p class="text-lg text-slate-600 dark:text-slate-300 mb-8">
-                        A regra de ouro: <strong>a fonte da verdade são os arquivos Markdown</strong> dentro de <code class="text-sm bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">docs/</code>. A página <code class="text-sm bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">visao-projeto.html</code> é apenas a interface visual para leitura humana. Nada além disso é obrigatório.
+                        A regra de ouro: <strong>a fonte da verdade são os arquivos Markdown</strong> dentro de <code class="text-sm bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">docs/</code>. A página <code class="text-sm bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">visao-projeto.html</code> só exibe esses arquivos. O mapa do cérebro, em <code class="text-sm bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">graphify-out/</code>, é o contexto que a IA consulta.
                     </p>
                     <div class="space-y-4">
                         <div class="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors duration-300">
@@ -216,12 +217,19 @@
                         <div class="space-y-2">
                             <p class="text-indigo-400">meu-projeto/</p>
                             <p class="pl-4 border-l border-slate-700 ml-2 text-white">.cursorrules <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- Regras da IA</span></p>
+                            <p class="pl-4 border-l border-slate-700 ml-2 text-white">.graphifyignore <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- O que fica de fora do mapa</span></p>
+                            <p class="pl-4 border-l border-slate-700 ml-2 text-indigo-400">.cursor/rules/</p>
+                            <p class="pl-8 border-l border-slate-700 ml-2 text-cyan-300">graphify.mdc <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- IA consulta o mapa</span></p>
                             <p class="pl-4 border-l border-slate-700 ml-2 text-indigo-400">docs/</p>
                             <p class="pl-8 border-l border-slate-700 ml-2 text-blue-300">visao-projeto.html <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- Interface visual</span></p>
                             <p class="pl-8 border-l border-slate-700 ml-2">SOBRE.md <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- Porta de Entrada</span></p>
                             <p class="pl-8 border-l border-slate-700 ml-2">SDD.md <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- O Norte Técnico</span></p>
                             <p class="pl-8 border-l border-slate-700 ml-2">ROADMAP.md <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- O Futuro</span></p>
                             <p class="pl-8 border-l border-slate-700 ml-2">CHANGELOG_EVIDENCES.md <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- O Passado</span></p>
+                            <p class="pl-4 border-l border-slate-700 ml-2 text-indigo-400">graphify-out/</p>
+                            <p class="pl-8 border-l border-slate-700 ml-2 text-cyan-300">GRAPH_REPORT.md <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- Mapa do cérebro</span></p>
+                            <p class="pl-8 border-l border-slate-700 ml-2 text-cyan-300">graph.html <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- Mapa visual</span></p>
+                            <p class="pl-8 border-l border-slate-700 ml-2 text-cyan-300">graph.json <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">&lt;- Consulta da IA</span></p>
                             <p class="pl-4 border-l border-slate-700 ml-2 text-indigo-400">src/</p>
                             <p class="pl-8 border-l border-slate-700 ml-2">... <span class="text-slate-500 dark:text-slate-400 text-xs ml-2">seu código limpo aqui</span></p>
                         </div>
@@ -231,6 +239,38 @@
                         <strong>Camada opcional:</strong> para projetos muito grandes, com múltiplos devs, regras críticas ou necessidade de specs formais, o time pode adicionar uma pasta extra de especificações. No fluxo padrão, porém, o D.N.E.E. Docs funciona apenas com a pasta <code class="bg-indigo-100 dark:bg-indigo-500/20 px-1 py-0.5 rounded">docs/</code>.
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Mapa do cérebro -->
+        <section id="mapa" class="scroll-mt-24">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-sm font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-3">Contexto da IA</h2>
+                <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">O mapa do cérebro</h3>
+                <p class="text-lg text-slate-600 dark:text-slate-300">
+                    O <strong>Graphify</strong> liga arquivos, conceitos e relações do projeto num grafo local. A IA consulta esse mapa antes de vasculhar o repositório, e assim trabalha com o contexto da ferramenta em vez de reler tudo.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <h4 class="text-lg font-bold mb-2">GRAPH_REPORT.md</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">Leitura ampla: conceitos centrais, comunidades e perguntas que o mapa sugere.</p>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <h4 class="text-lg font-bold mb-2">graph.html</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">O mesmo mapa, visual, para uma pessoa abrir no navegador e clicar nos nós.</p>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <h4 class="text-lg font-bold mb-2">graph.json</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">A consulta da IA: <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded">graphify query</code>, <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded">explain</code> e <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded">path</code>.</p>
+                </div>
+            </div>
+            <div class="mt-6 bg-slate-900 rounded-2xl p-6 shadow-xl text-slate-300 font-mono text-sm border border-transparent dark:border-slate-700/80 max-w-3xl mx-auto">
+                <p class="text-slate-400 mb-3"># na raiz, só se o mapa ainda não existir</p>
+                <p><span class="text-cyan-300">graphify</span> install --project --platform cursor</p>
+                <p><span class="text-cyan-300">graphify</span> extract . --code-only</p>
+                <p><span class="text-cyan-300">graphify</span> cluster-only . --no-label</p>
+                <p class="text-slate-500 mt-3">Projeto só de documentação, com grafo vazio: rode /graphify . no chat. Cache, wiki, Obsidian e SVG ficam de fora.</p>
             </div>
         </section>
 
@@ -339,6 +379,8 @@ Aguarde meu OK antes de criar arquivos.
 Após meu OK, crie a estrutura obrigatória:
 
 .cursorrules
+.graphifyignore
+.cursor/rules/graphify.mdc
 
 docs/
   visao-projeto.html
@@ -346,6 +388,28 @@ docs/
   SDD.md
   ROADMAP.md
   CHANGELOG_EVIDENCES.md
+
+graphify-out/
+  GRAPH_REPORT.md
+  graph.html
+  graph.json
+
+Se .cursor/rules/graphify.mdc ou graphify-out/graph.json ainda não existirem, instale o mapa do cérebro na raiz:
+
+graphify install --project --platform cursor
+
+No .graphifyignore, exclua dependências, build, arquivos gerados e a pasta graphify-out/.
+Ignore graphify-out/cache/ no Git.
+
+Gere só o mapa útil:
+graphify extract . --code-only
+graphify cluster-only . --no-label
+
+Se o grafo sair vazio porque o projeto é só documentação, rode /graphify . no chat.
+Não gere wiki, vault Obsidian, SVG nem outras exportações.
+
+Antes de explorar o projeto, consulte o mapa com graphify query.
+Depois de mudar código, rode graphify update .
 
 Regras obrigatórias:
 
@@ -362,6 +426,7 @@ Regras obrigatórias:
 7. Não copie o layout do produto. Use sempre o padrão D.N.E.E. Docs.
 8. Se não souber algo, registre como [A VALIDAR] e crie uma seção "Pontos a complementar".
 9. Inicie o CHANGELOG_EVIDENCES.md com o registro da criação da documentação.
+10. A IA consulta o mapa do cérebro (Graphify) antes de vasculhar o projeto e não cria arquivo fora desta estrutura.
 
 Conteúdo mínimo dos arquivos:
 
@@ -497,6 +562,8 @@ PASSO 2 — Criação da documentação
 Após meu OK, crie ou atualize a estrutura obrigatória:
 
 .cursorrules
+.graphifyignore
+.cursor/rules/graphify.mdc
 
 docs/
   visao-projeto.html
@@ -504,6 +571,28 @@ docs/
   SDD.md
   ROADMAP.md
   CHANGELOG_EVIDENCES.md
+
+graphify-out/
+  GRAPH_REPORT.md
+  graph.html
+  graph.json
+
+Se .cursor/rules/graphify.mdc ou graphify-out/graph.json ainda não existirem, instale o mapa do cérebro na raiz:
+
+graphify install --project --platform cursor
+
+No .graphifyignore, exclua dependências, build, arquivos gerados e a pasta graphify-out/.
+Ignore graphify-out/cache/ no Git.
+
+Gere só o mapa útil:
+graphify extract . --code-only
+graphify cluster-only . --no-label
+
+Se o grafo sair vazio porque o projeto é só documentação, rode /graphify . no chat.
+Não gere wiki, vault Obsidian, SVG nem outras exportações.
+
+Antes de explorar o projeto, consulte o mapa com graphify query.
+Depois de mudar código, rode graphify update .
 
 Regras obrigatórias:
 
@@ -521,6 +610,7 @@ Regras obrigatórias:
 8. Toda informação incerta deve ser marcada como [A VALIDAR].
 9. Ao final de cada arquivo, inclua "Pontos a complementar".
 10. Inicie ou atualize o CHANGELOG_EVIDENCES.md com o registro desta organização documental.
+11. A IA consulta o mapa do cérebro (Graphify) antes de vasculhar o projeto e não cria arquivo fora desta estrutura.
 
 Conteúdo mínimo dos arquivos:
 
@@ -577,12 +667,14 @@ Atualize o .cursorrules para obrigar que, daqui em diante, toda mudança relevan
 2. Ler docs/SDD.md
 3. Ler docs/ROADMAP.md
 4. Ler docs/CHANGELOG_EVIDENCES.md
-5. Fazer Discovery curto no chat
-6. Aguardar aprovação
-7. Implementar
-8. Atualizar o Markdown correspondente
-9. Atualizar docs/visao-projeto.html apenas se necessário
-10. Registrar decisão/evidência em CHANGELOG_EVIDENCES.md
+5. Consultar o mapa com graphify query antes de explorar arquivos
+6. Fazer Discovery curto no chat
+7. Aguardar aprovação
+8. Implementar
+9. Atualizar o Markdown correspondente
+10. Atualizar docs/visao-projeto.html apenas se necessário
+11. Registrar decisão/evidência em CHANGELOG_EVIDENCES.md
+12. Rodar graphify update . se o código mudou
 
 Nunca implementar mudança relevante sem atualizar a documentação relacionada.
 
@@ -657,6 +749,12 @@ Antes de mexer no código, leia:
 - docs/SDD.md
 - docs/ROADMAP.md
 - docs/CHANGELOG_EVIDENCES.md
+- graphify-out/GRAPH_REPORT.md
+
+Se graphify-out/graph.json não existir, instale o mapa do cérebro como no fluxo de projeto novo e só então continue.
+
+Consulte o mapa antes de explorar arquivos:
+graphify query "<tarefa>"
 
 Depois, escolha a próxima tarefa pendente mais relevante do ROADMAP.md e faça um Discovery curto no chat:
 
@@ -675,7 +773,8 @@ Depois da implementação:
 - Atualize o SDD.md se alguma regra, fluxo ou arquitetura mudou.
 - Atualize o SOBRE.md se a funcionalidade mudou a percepção do produto.
 - Atualize o CHANGELOG_EVIDENCES.md com Antes, Depois, Decisão, Evidência e Próximos passos.
-- Atualize o docs/visao-projeto.html apenas se necessário.</code></pre>
+- Atualize o docs/visao-projeto.html apenas se necessário.
+- Rode graphify update . para o mapa do cérebro acompanhar o código.</code></pre>
                     </div>
                 </div>
 
@@ -723,6 +822,10 @@ Revise a alteração feita e atualize obrigatoriamente:
 
 5. docs/visao-projeto.html
    - Atualize apenas se houve mudança de layout, abas, renderização ou conteúdo visual estático.
+
+6. Mapa do cérebro
+   - Se o código mudou, rode graphify update .
+   - Se graphify-out/graph.json não existir, instale o Graphify na raiz e gere só GRAPH_REPORT.md, graph.html e graph.json.
 
 Não invente métricas.
 Se não houver evidência real, registre como [A VALIDAR] e indique qual evidência precisa ser coletada.</code></pre>

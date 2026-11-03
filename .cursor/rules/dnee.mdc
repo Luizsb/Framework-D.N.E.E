@@ -1,0 +1,18 @@
+---
+description: contexto do framework D.N.E.E. Docs
+alwaysApply: true
+---
+
+Este repositório é o guia do Framework D.N.E.E. Docs (Descobrir, Nortear, Especificar, Evidenciar).
+
+Fonte da verdade do guia: `README.md` e `index.html`. Mantenha os dois alinhados quando a estrutura, os prompts ou o mapa mudarem.
+
+Contexto que a IA usa antes de responder sobre a ferramenta:
+
+- `graphify-out/GRAPH_REPORT.md` para uma leitura ampla do projeto
+- `graphify query`, `graphify explain` e `graphify path` quando `graphify-out/graph.json` existir
+- As quatro peças do padrão: `docs/SOBRE.md`, `docs/SDD.md`, `docs/ROADMAP.md`, `docs/CHANGELOG_EVIDENCES.md`, exibidas em `docs/visao-projeto.html`
+
+Arquivos deste repositório: `index.html`, `README.md`, `favicon.svg`, `.github/workflows/pages.yml`, `.cursor/rules/`, `.graphifyignore`, `.gitignore` e `graphify-out/` (`GRAPH_REPORT.md`, `graph.html`, `graph.json`, `manifest.json`).
+
+Não crie wiki, vault Obsidian, SVG, pasta `docs/` paralela nem outros artefatos de apoio. O mapa do cérebro é o Graphify; a página visual do padrão continua com exatamente 4 abas.
